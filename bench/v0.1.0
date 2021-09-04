@@ -1,0 +1,46 @@
+goos: darwin
+goarch: amd64
+pkg: github.com/yut-kt/gowindow
+cpu: Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
+BenchmarkHamming-12      	1000000000	         0.0000011 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHamming-12      	1000000000	         0.0000009 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHamming-12      	1000000000	         0.0000009 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHamming-12      	1000000000	         0.0000005 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHamming-12      	1000000000	         0.0000007 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHammingD-12     	1000000000	         0.0000003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHammingD-12     	1000000000	         0.0000003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHammingD-12     	1000000000	         0.0000003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHammingD-12     	1000000000	         0.0000003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHammingD-12     	1000000000	         0.0000002 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHanning-12      	1000000000	         0.0000008 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHanning-12      	1000000000	         0.0000007 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHanning-12      	1000000000	         0.0000004 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHanning-12      	1000000000	         0.0000007 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHanning-12      	1000000000	         0.0000007 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHann-12         	1000000000	         0.0000008 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHann-12         	1000000000	         0.0000007 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHann-12         	1000000000	         0.0000007 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHann-12         	1000000000	         0.0000006 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHann-12         	1000000000	         0.0000006 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHanningD-12     	1000000000	         0.0000003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHanningD-12     	1000000000	         0.0000003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHanningD-12     	1000000000	         0.0000003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHanningD-12     	1000000000	         0.0000003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHanningD-12     	1000000000	         0.0000003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHannD-12        	1000000000	         0.0000003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHannD-12        	1000000000	         0.0000003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHannD-12        	1000000000	         0.0000002 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHannD-12        	1000000000	         0.0000003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkHannD-12        	1000000000	         0.0000003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlackman-12     	1000000000	         0.0000008 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlackman-12     	1000000000	         0.0000008 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlackman-12     	1000000000	         0.0000008 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlackman-12     	1000000000	         0.0000008 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlackman-12     	1000000000	         0.0000027 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlackmanD-12    	1000000000	         0.0000004 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlackmanD-12    	1000000000	         0.0000003 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlackmanD-12    	1000000000	         0.0000004 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlackmanD-12    	1000000000	         0.0000004 ns/op	       0 B/op	       0 allocs/op
+BenchmarkBlackmanD-12    	1000000000	         0.0000004 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/yut-kt/gowindow	0.591s
