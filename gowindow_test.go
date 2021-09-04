@@ -2,8 +2,18 @@ package gowindow_test
 
 import (
 	"fmt"
+
 	"github.com/yut-kt/gowindow"
 )
+
+func ExampleRectangular() {
+	for _, x := range gowindow.Rectangular([]float64{1, 2, 3, 4}) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 1.000000 2.000000 3.000000 4.000000
+}
 
 func ExampleHamming() {
 	for _, x := range gowindow.Hamming([]float64{1, 2, 3, 4}) {

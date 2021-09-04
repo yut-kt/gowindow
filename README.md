@@ -20,7 +20,7 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
 
 ## Supported window function
 *[a list of window function](https://en.wikipedia.org/wiki/Window_function#A_list_of_window_functions)*
-- ~~Rectangular window~~
+- Rectangular window
 - B-spline windows
   - ~~Triangular window~~
   - ~~Parzen window~~
