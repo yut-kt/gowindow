@@ -1,0 +1,9 @@
+github.com/yut-kt/gowindow/blackman.go:5:	Blackman	100.0%
+github.com/yut-kt/gowindow/blackman.go:15:	BlackmanD	100.0%
+github.com/yut-kt/gowindow/hamming.go:7:	Hamming		0.0%
+github.com/yut-kt/gowindow/hamming.go:18:	HammingD	0.0%
+github.com/yut-kt/gowindow/hanning.go:7:	Hanning		100.0%
+github.com/yut-kt/gowindow/hanning.go:18:	Hann		100.0%
+github.com/yut-kt/gowindow/hanning.go:24:	HanningD	100.0%
+github.com/yut-kt/gowindow/hanning.go:33:	HannD		100.0%
+total:						(statements)	71.4%
