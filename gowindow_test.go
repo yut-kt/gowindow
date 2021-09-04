@@ -6,23 +6,23 @@ import (
 )
 
 func ExampleHamming() {
-	for _, x := range gowindow.Hanning([]float64{1, 2, 3, 4}) {
+	for _, x := range gowindow.Hamming([]float64{1, 2, 3, 4}) {
 		fmt.Printf("%f ", x)
 	}
 	fmt.Println()
 	// Output:
-	// 0.000000 1.500000 2.250000 0.000000
+	// 0.080000 1.540000 2.310000 0.320000
 }
 
 func ExampleHammingD() {
 	s := []float64{1, 2, 3, 4}
-	gowindow.HanningD(s)
+	gowindow.HammingD(s)
 	for i := range s {
 		fmt.Printf("%f ", s[i])
 	}
 	fmt.Println()
 	// Output:
-	// 0.000000 1.500000 2.250000 0.000000
+	// 0.080000 1.540000 2.310000 0.320000
 }
 
 func ExampleHanning() {
