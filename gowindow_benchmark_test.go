@@ -6,38 +6,66 @@ import (
 	"github.com/yut-kt/gowindow"
 )
 
-func BenchmarkRectangular(b *testing.B) {
-	gowindow.Rectangular([]float64{1, 2, 3, 4})
+func BenchmarkApply_rectangular(b *testing.B) {
+	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.Rectangular)
 }
 
-func BenchmarkHamming(b *testing.B) {
-	gowindow.Hanning([]float64{1, 2, 3, 4})
+func BenchmarkApplyNew_rectangular(b *testing.B) {
+	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Rectangular)
 }
 
-func BenchmarkHammingD(b *testing.B) {
-	gowindow.HanningD([]float64{1, 2, 3, 4})
+func BenchmarkApply_triangular(b *testing.B) {
+	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.Triangular)
 }
 
-func BenchmarkHanning(b *testing.B) {
-	gowindow.Hanning([]float64{1, 2, 3, 4})
+func BenchmarkApplyNew_triangular(b *testing.B) {
+	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Triangular)
 }
 
-func BenchmarkHann(b *testing.B) {
-	gowindow.Hann([]float64{1, 2, 3, 4})
+func BenchmarkApply_bartlett(b *testing.B) {
+	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.Bartlett)
 }
 
-func BenchmarkHanningD(b *testing.B) {
-	gowindow.HanningD([]float64{1, 2, 3, 4})
+func BenchmarkApplyNew_bartlett(b *testing.B) {
+	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Bartlett)
 }
 
-func BenchmarkHannD(b *testing.B) {
-	gowindow.HannD([]float64{1, 2, 3, 4})
+func BenchmarkApply_fejer(b *testing.B) {
+	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.Fejer)
 }
 
-func BenchmarkBlackman(b *testing.B) {
-	gowindow.Blackman([]float64{1, 2, 3, 4})
+func BenchmarkApplyNew_fejer(b *testing.B) {
+	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Fejer)
 }
 
-func BenchmarkBlackmanD(b *testing.B) {
-	gowindow.BlackmanD([]float64{1, 2, 3, 4})
+func BenchmarkApply_hanning(b *testing.B) {
+	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.Hanning)
+}
+
+func BenchmarkApplyNew_hanning(b *testing.B) {
+	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Hanning)
+}
+
+func BenchmarkApply_hann(b *testing.B) {
+	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.Hann)
+}
+
+func BenchmarkApplyNew_hann(b *testing.B) {
+	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Hann)
+}
+
+func BenchmarkApply_hamming(b *testing.B) {
+	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.Hamming)
+}
+
+func BenchmarkApplyNew_hamming(b *testing.B) {
+	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Hamming)
+}
+
+func BenchmarkApply_blackman(b *testing.B) {
+	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.Blackman)
+}
+
+func BenchmarkApplyNew_blackman(b *testing.B) {
+	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Blackman)
 }
