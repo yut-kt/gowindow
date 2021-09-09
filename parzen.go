@@ -28,3 +28,11 @@ func parzenCalculation(n, N float64) float64 {
 	}
 	return 2.0 * math.Pow(1.0-nAbs/LHalf, 3)
 }
+
+func deLaValleePoussin(s []float64) {
+	parzen(s)
+}
+
+func deLaValleePoussinNew(s []float64) []float64 {
+	return parzenNew(s)
+}
