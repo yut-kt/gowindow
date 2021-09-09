@@ -23,7 +23,7 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
 - Rectangular window
 - B-spline windows
   - Triangular window
-  - ~~Parzen window~~
+  - Parzen window
 - Other polynomial windows 
   - ~~Welch window~~
 - Sine window

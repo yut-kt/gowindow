@@ -2,9 +2,14 @@ package gowindow
 
 import "math"
 
-// Hanning is func to apply Hanning Window
-// Non-Destructive function
-func Hanning(s []float64) []float64 {
+func hanning(s []float64) {
+	v := 2.0 * math.Pi / float64(len(s)-1)
+	for n := range s {
+		s[n] *= 0.5 - 0.5*math.Cos(v*float64(n))
+	}
+}
+
+func hanningNew(s []float64) []float64 {
 	sw := make([]float64, len(s))
 	v := 2.0 * math.Pi / float64(len(s)-1)
 	for n := range s {
@@ -13,23 +18,10 @@ func Hanning(s []float64) []float64 {
 	return sw
 }
 
-// Hann is func to apply Hanning Window
-// Non-Destructive function
-func Hann(s []float64) []float64 {
-	return Hanning(s)
+func hann(s []float64) {
+	hanning(s)
 }
 
-// HanningD is func to apply Hanning Window
-// Destructive function
-func HanningD(s []float64) {
-	v := 2.0 * math.Pi / float64(len(s)-1)
-	for n := range s {
-		s[n] *= 0.5 - 0.5*math.Cos(v*float64(n))
-	}
-}
-
-// HannD is func to apply Hanning Window
-// Destructive function
-func HannD(s []float64) {
-	HanningD(s)
+func hannNew(s []float64) []float64 {
+	return hanningNew(s)
 }
