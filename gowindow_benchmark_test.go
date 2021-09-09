@@ -1,9 +1,14 @@
 package gowindow_test
 
 import (
-	"github.com/yut-kt/gowindow"
 	"testing"
+
+	"github.com/yut-kt/gowindow"
 )
+
+func BenchmarkRectangular(b *testing.B) {
+	gowindow.Rectangular([]float64{1, 2, 3, 4})
+}
 
 func BenchmarkHamming(b *testing.B) {
 	gowindow.Hanning([]float64{1, 2, 3, 4})
