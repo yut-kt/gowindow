@@ -6,19 +6,20 @@ import (
 	"github.com/yut-kt/gowindow"
 )
 
-func ExampleApplyNew_rectangular() {
-	for _, x := range gowindow.ApplyNew([]float64{1, 2, 3, 4, 5}, gowindow.Rectangular) {
-		fmt.Printf("%f ", x)
-	}
-	fmt.Println()
-	// Output:
-	// 1.000000 2.000000 3.000000 4.000000 5.000000
-}
 func ExampleApply_rectangular() {
 	s := []float64{1, 2, 3, 4, 5}
 	gowindow.Apply(s, gowindow.Rectangular)
 	for i := range s {
 		fmt.Printf("%f ", s[i])
+	}
+	fmt.Println()
+	// Output:
+	// 1.000000 2.000000 3.000000 4.000000 5.000000
+}
+
+func ExampleApplyNew_rectangular() {
+	for _, x := range gowindow.ApplyNew([]float64{1, 2, 3, 4, 5}, gowindow.Rectangular) {
+		fmt.Printf("%f ", x)
 	}
 	fmt.Println()
 	// Output:
