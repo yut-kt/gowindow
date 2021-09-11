@@ -27,6 +27,8 @@ const (
 	Hamming
 	// Blackman https://en.wikipedia.org/wiki/Window_function#Blackman_window
 	Blackman
+	// Nuttall https://en.wikipedia.org/wiki/Window_function#Nuttall_window,_continuous_first_derivative
+	Nuttall
 )
 
 // Apply func to apply window func Destructively
@@ -60,6 +62,8 @@ func chooseApplyFunc(w window) func([]float64) {
 		return hamming
 	case Blackman:
 		return blackman
+	case Nuttall:
+		return nuttall
 	}
 	// return empty if unknown window
 	return func(float64s []float64) {}
@@ -96,6 +100,8 @@ func chooseApplyNewFunc(w window) func([]float64) []float64 {
 		return hammingNew
 	case Blackman:
 		return blackmanNew
+	case Nuttall:
+		return nuttallNew
 	}
 	// return empty if unknown window
 	return func(float64s []float64) []float64 { return []float64{} }

@@ -101,3 +101,11 @@ func BenchmarkApply_blackman(b *testing.B) {
 func BenchmarkApplyNew_blackman(b *testing.B) {
 	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Blackman)
 }
+
+func BenchmarkApply_nuttall(b *testing.B) {
+	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.Nuttall)
+}
+
+func BenchmarkApplyNew_nuttall(b *testing.B) {
+	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Nuttall)
+}
