@@ -29,80 +29,80 @@ const (
 	Blackman
 	// Nuttall https://en.wikipedia.org/wiki/Window_function#Nuttall_window,_continuous_first_derivative
 	Nuttall
+	// None is test window for when missed in switch implementation
+	None
 )
+
+func (w window) applyWindow(s []float64) {
+	switch w {
+	case Rectangular:
+		rectangular(s)
+	case Triangular:
+		triangular(s)
+	case Bartlett:
+		bartlett(s)
+	case Fejer:
+		fejer(s)
+	case Parzen:
+		parzen(s)
+	case DeLaValleePoussin:
+		deLaValleePoussin(s)
+	case Welch:
+		welch(s)
+	case Sine:
+		sine(s)
+	case Hanning:
+		hanning(s)
+	case Hann:
+		hann(s)
+	case Hamming:
+		hamming(s)
+	case Blackman:
+		blackman(s)
+	case Nuttall:
+		nuttall(s)
+	}
+}
+
+func (w window) applyNewWindow(s []float64) []float64 {
+	switch w {
+	case Rectangular:
+		return rectangularNew(s)
+	case Triangular:
+		return triangularNew(s)
+	case Bartlett:
+		return bartlettNew(s)
+	case Fejer:
+		return fejerNew(s)
+	case Parzen:
+		return parzenNew(s)
+	case DeLaValleePoussin:
+		return deLaValleePoussinNew(s)
+	case Welch:
+		return welchNew(s)
+	case Sine:
+		return sineNew(s)
+	case Hanning:
+		return hanningNew(s)
+	case Hann:
+		return hannNew(s)
+	case Hamming:
+		return hammingNew(s)
+	case Blackman:
+		return blackmanNew(s)
+	case Nuttall:
+		return nuttallNew(s)
+	}
+	// missed in switch implementation
+	return []float64{}
+}
 
 // Apply func to apply window func Destructively
 func Apply(s []float64, w window) {
-	chooseApplyFunc(w)(s)
-}
-
-func chooseApplyFunc(w window) func([]float64) {
-	switch w {
-	case Rectangular:
-		return rectangular
-	case Triangular:
-		return triangular
-	case Bartlett:
-		return bartlett
-	case Fejer:
-		return fejer
-	case Parzen:
-		return parzen
-	case DeLaValleePoussin:
-		return deLaValleePoussin
-	case Welch:
-		return welch
-	case Sine:
-		return sine
-	case Hanning:
-		return hanning
-	case Hann:
-		return hann
-	case Hamming:
-		return hamming
-	case Blackman:
-		return blackman
-	case Nuttall:
-		return nuttall
-	}
-	// return empty if unknown window
-	return func(float64s []float64) {}
+	w.applyWindow(s)
 }
 
 // ApplyNew func to apply window func Non-Destructively
 func ApplyNew(s []float64, w window) []float64 {
-	return chooseApplyNewFunc(w)(s)
-}
-
-func chooseApplyNewFunc(w window) func([]float64) []float64 {
-	switch w {
-	case Rectangular:
-		return rectangularNew
-	case Triangular:
-		return triangularNew
-	case Bartlett:
-		return bartlettNew
-	case Fejer:
-		return fejerNew
-	case Parzen:
-		return parzenNew
-	case DeLaValleePoussin:
-		return deLaValleePoussinNew
-	case Welch:
-		return welchNew
-	case Sine:
-		return sineNew
-	case Hanning:
-		return hanningNew
-	case Hann:
-		return hannNew
-	case Hamming:
-		return hammingNew
-	case Blackman:
-		return blackmanNew
-	case Nuttall:
-		return nuttallNew
-	}
-	// return empty if unknown window
-	return func(float64s []float64) []float64 { return []float64{} }
+	return w.applyNewWindow(s)
 }
