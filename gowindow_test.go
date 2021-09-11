@@ -6,19 +6,20 @@ import (
 	"github.com/yut-kt/gowindow"
 )
 
-func ExampleApplyNew_rectangular() {
-	for _, x := range gowindow.ApplyNew([]float64{1, 2, 3, 4, 5}, gowindow.Rectangular) {
-		fmt.Printf("%f ", x)
-	}
-	fmt.Println()
-	// Output:
-	// 1.000000 2.000000 3.000000 4.000000 5.000000
-}
 func ExampleApply_rectangular() {
 	s := []float64{1, 2, 3, 4, 5}
 	gowindow.Apply(s, gowindow.Rectangular)
 	for i := range s {
 		fmt.Printf("%f ", s[i])
+	}
+	fmt.Println()
+	// Output:
+	// 1.000000 2.000000 3.000000 4.000000 5.000000
+}
+
+func ExampleApplyNew_rectangular() {
+	for _, x := range gowindow.ApplyNew([]float64{1, 2, 3, 4, 5}, gowindow.Rectangular) {
+		fmt.Printf("%f ", x)
 	}
 	fmt.Println()
 	// Output:
@@ -124,6 +125,46 @@ func ExampleApplyNew_deLaValleePoussin() {
 	// 0.009259 0.500000 2.583333 3.444444 1.250000
 }
 
+func ExampleApply_welch() {
+	s := []float64{1, 1, 1, 1, 1}
+	gowindow.Apply(s, gowindow.Welch)
+	for i := range s {
+		fmt.Printf("%f ", s[i])
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.750000 1.000000 0.750000 0.000000
+}
+
+func ExampleApplyNew_welch() {
+	for _, x := range gowindow.ApplyNew([]float64{1, 1, 1, 1, 1}, gowindow.Welch) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.750000 1.000000 0.750000 0.000000
+}
+
+func ExampleApply_sine() {
+	s := []float64{1, 1, 1, 1, 1}
+	gowindow.Apply(s, gowindow.Sine)
+	for i := range s {
+		fmt.Printf("%f ", s[i])
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.707107 1.000000 0.707107 0.000000
+}
+
+func ExampleApplyNew_sine() {
+	for _, x := range gowindow.ApplyNew([]float64{1, 1, 1, 1, 1}, gowindow.Sine) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.707107 1.000000 0.707107 0.000000
+}
+
 func ExampleApply_hanning() {
 	s := []float64{1, 2, 3, 4}
 	gowindow.Apply(s, gowindow.Hanning)
@@ -202,4 +243,24 @@ func ExampleApplyNew_blackman() {
 	fmt.Println()
 	// Output:
 	// -0.000000 1.260000 1.890000 -0.000000
+}
+
+func ExampleApply_nuttall() {
+	s := []float64{1, 2, 3, 4}
+	gowindow.Apply(s, gowindow.Nuttall)
+	for i := range s {
+		fmt.Printf("%f ", s[i])
+	}
+	fmt.Println()
+	// Output:
+	// -0.000000 1.029492 1.544238 -0.000000
+}
+
+func ExampleApplyNew_nuttall() {
+	for _, x := range gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Nuttall) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// -0.000000 1.029492 1.544238 -0.000000
 }
