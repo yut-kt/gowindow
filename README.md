@@ -25,7 +25,7 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Triangular window
   - Parzen window
 - Other polynomial windows 
-  - ~~Welch window~~
+  - Welch window
 - Sine window
   - ~~Power-of-sine/cosine windows~~
 - Cosine-sum windows
