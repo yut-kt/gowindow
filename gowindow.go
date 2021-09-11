@@ -29,6 +29,8 @@ const (
 	Blackman
 	// Nuttall https://en.wikipedia.org/wiki/Window_function#Nuttall_window,_continuous_first_derivative
 	Nuttall
+	// BlackmanNuttall https://en.wikipedia.org/wiki/Window_function#Blackman%E2%80%93Nuttall_window
+	BlackmanNuttall
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -61,6 +63,8 @@ func (w window) applyWindow(s []float64) {
 		blackman(s)
 	case Nuttall:
 		nuttall(s)
+	case BlackmanNuttall:
+		blackmanNuttall(s)
 	}
 }
 
@@ -92,6 +96,9 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return blackmanNew(s)
 	case Nuttall:
 		return nuttallNew(s)
+	case BlackmanNuttall:
+		return blackmanNuttallNew(s)
+
 	}
 	// missed in switch implementation
 	return []float64{}

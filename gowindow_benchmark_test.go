@@ -223,3 +223,19 @@ func BenchmarkApplyNew_nuttall(b *testing.B) {
 		gowindow.ApplyNew(s, gowindow.Nuttall)
 	}
 }
+
+func BenchmarkApply_blackmanNuttall(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.BlackmanNuttall)
+	}
+}
+
+func BenchmarkApplyNew_blackmanNuttall(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.BlackmanNuttall)
+	}
+}

@@ -265,6 +265,27 @@ func ExampleApplyNew_nuttall() {
 	// -0.000000 1.029492 1.544238 -0.000000
 }
 
+func ExampleApply_blackmanNuttall() {
+	s := []float64{1, 1, 1, 1, 1, 1, 1, 1, 1}
+	gowindow.Apply(s, gowindow.Nuttall)
+	for i := range s {
+		fmt.Printf("%f ", s[i])
+	}
+	fmt.Println()
+	// Output:
+	// -0.000000 0.020039 0.211536 0.691497 1.000000 0.691497 0.211536 0.020039 -0.000000
+}
+
+func ExampleApplyNew_blackmanNuttall() {
+	s := []float64{1, 1, 1, 1, 1, 1, 1, 1, 1}
+	for _, x := range gowindow.ApplyNew(s, gowindow.Nuttall) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// -0.000000 0.020039 0.211536 0.691497 1.000000 0.691497 0.211536 0.020039 -0.000000
+}
+
 func ExampleApply_missedSwitchImplementation() {
 	s := []float64{1, 2, 3, 4}
 	gowindow.Apply(s, gowindow.None)
