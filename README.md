@@ -35,7 +35,7 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Blackman–Nuttall window
   - Blackman–Harris window
   - Flat top window
-  - ~~Rife–Vincent windows~~
+  - Rife–Vincent windows
 - Adjustable windows
   - ~~Gaussian window~~
   - ~~Confined Gaussian window~~

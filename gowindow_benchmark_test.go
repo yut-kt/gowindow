@@ -271,3 +271,205 @@ func BenchmarkApplyNew_flatTop(b *testing.B) {
 		gowindow.ApplyNew(s, gowindow.FlatTop)
 	}
 }
+
+func BenchmarkApply_rifeVincentClass1Order1(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.RifeVincentClass1Order1)
+	}
+}
+
+func BenchmarkApplyNew_rifeVincentClass1Order1(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.RifeVincentClass1Order1)
+	}
+}
+
+func BenchmarkApply_rifeVincentClass1Order2(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.RifeVincentClass1Order2)
+	}
+}
+
+func BenchmarkApplyNew_rifeVincentClass1Order2(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.RifeVincentClass1Order2)
+	}
+}
+
+func BenchmarkApply_rifeVincentClass1Order3(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.RifeVincentClass1Order3)
+	}
+}
+
+func BenchmarkApplyNew_rifeVincentClass1Order3(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.RifeVincentClass1Order3)
+	}
+}
+
+func BenchmarkApply_rifeVincentClass1Order4(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.RifeVincentClass1Order4)
+	}
+}
+
+func BenchmarkApplyNew_rifeVincentClass1Order4(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.RifeVincentClass1Order4)
+	}
+}
+
+func BenchmarkApply_rifeVincentClass2Decibel36(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.RifeVincentClass2Decibel36)
+	}
+}
+func BenchmarkApplyNew_rifeVincentClass2Decibel36(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.RifeVincentClass2Decibel36)
+	}
+}
+
+func BenchmarkApply_rifeVincentClass2Decibel42(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.RifeVincentClass2Decibel42)
+	}
+}
+func BenchmarkApplyNew_rifeVincentClass2Decibel42(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.RifeVincentClass2Decibel42)
+	}
+}
+
+func BenchmarkApply_rifeVincentClass2Decibel48(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.RifeVincentClass2Decibel48)
+	}
+}
+func BenchmarkApplyNew_rifeVincentClass2Decibel48(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.RifeVincentClass2Decibel48)
+	}
+}
+
+func BenchmarkApply_rifeVincentClass2Decibel54(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.RifeVincentClass2Decibel54)
+	}
+}
+func BenchmarkApplyNew_rifeVincentClass2Decibel54(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.RifeVincentClass2Decibel54)
+	}
+}
+
+func BenchmarkApply_rifeVincentClass2Decibel60(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.RifeVincentClass2Decibel60)
+	}
+}
+func BenchmarkApplyNew_rifeVincentClass2Decibel60(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.RifeVincentClass2Decibel60)
+	}
+}
+
+func BenchmarkApply_rifeVincentClass2Decibel66(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.RifeVincentClass2Decibel66)
+	}
+}
+func BenchmarkApplyNew_rifeVincentClass2Decibel66(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.RifeVincentClass2Decibel66)
+	}
+}
+
+func BenchmarkApply_rifeVincentClass3Order2(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.RifeVincentClass3Order2)
+	}
+}
+
+func BenchmarkApplyNew_rifeVincentClass3Order2(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.RifeVincentClass3Order2)
+	}
+}
+
+func BenchmarkApply_rifeVincentClass3Order3(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.RifeVincentClass3Order3)
+	}
+}
+
+func BenchmarkApplyNew_rifeVincentClass3Order3(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.RifeVincentClass3Order3)
+	}
+}
+
+func BenchmarkApply_rifeVincentClass3Order4(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.RifeVincentClass3Order4)
+	}
+}
+
+func BenchmarkApplyNew_rifeVincentClass3Order4(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.RifeVincentClass3Order4)
+	}
+}
