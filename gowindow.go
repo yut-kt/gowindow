@@ -17,6 +17,8 @@ const (
 	DeLaValleePoussin
 	// Welch https://en.wikipedia.org/wiki/Window_function#Welch_window
 	Welch
+	// Sine https://en.wikipedia.org/wiki/Window_function#Sine_window
+	Sine
 	// Hanning https://en.wikipedia.org/wiki/Window_function#Hann_and_Hamming_windows
 	Hanning
 	// Hann https://en.wikipedia.org/wiki/Window_function#Hann_and_Hamming_windows
@@ -48,6 +50,8 @@ func chooseApplyFunc(w window) func([]float64) {
 		return deLaValleePoussin
 	case Welch:
 		return welch
+	case Sine:
+		return sine
 	case Hanning:
 		return hanning
 	case Hann:
@@ -82,6 +86,8 @@ func chooseApplyNewFunc(w window) func([]float64) []float64 {
 		return deLaValleePoussinNew
 	case Welch:
 		return welchNew
+	case Sine:
+		return sineNew
 	case Hanning:
 		return hanningNew
 	case Hann:

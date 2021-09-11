@@ -62,6 +62,14 @@ func BenchmarkApplyNew_welch(b *testing.B) {
 	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Welch)
 }
 
+func BenchmarkApply_sine(b *testing.B) {
+	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.Sine)
+}
+
+func BenchmarkApplyNew_sine(b *testing.B) {
+	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Sine)
+}
+
 func BenchmarkApply_hanning(b *testing.B) {
 	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.Hanning)
 }

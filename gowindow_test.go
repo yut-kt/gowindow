@@ -145,6 +145,26 @@ func ExampleApplyNew_welch() {
 	// 0.000000 0.750000 1.000000 0.750000 0.000000
 }
 
+func ExampleApply_sine() {
+	s := []float64{1, 1, 1, 1, 1}
+	gowindow.Apply(s, gowindow.Sine)
+	for i := range s {
+		fmt.Printf("%f ", s[i])
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.707107 1.000000 0.707107 0.000000
+}
+
+func ExampleApplyNew_sine() {
+	for _, x := range gowindow.ApplyNew([]float64{1, 1, 1, 1, 1}, gowindow.Sine) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.707107 1.000000 0.707107 0.000000
+}
+
 func ExampleApply_hanning() {
 	s := []float64{1, 2, 3, 4}
 	gowindow.Apply(s, gowindow.Hanning)

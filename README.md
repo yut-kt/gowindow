@@ -27,7 +27,7 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
 - Other polynomial windows 
   - Welch window
 - Sine window
-  - ~~Power-of-sine/cosine windows~~
+  - Power-of-sine/cosine windows
 - Cosine-sum windows
   - Hann and Hamming windows
   - Blackman window
