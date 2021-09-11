@@ -15,6 +15,10 @@ const (
 	Parzen
 	// DeLaValleePoussin https://en.wikipedia.org/wiki/Window_function#Parzen_window
 	DeLaValleePoussin
+	// Welch https://en.wikipedia.org/wiki/Window_function#Welch_window
+	Welch
+	// Sine https://en.wikipedia.org/wiki/Window_function#Sine_window
+	Sine
 	// Hanning https://en.wikipedia.org/wiki/Window_function#Hann_and_Hamming_windows
 	Hanning
 	// Hann https://en.wikipedia.org/wiki/Window_function#Hann_and_Hamming_windows
@@ -23,6 +27,8 @@ const (
 	Hamming
 	// Blackman https://en.wikipedia.org/wiki/Window_function#Blackman_window
 	Blackman
+	// Nuttall https://en.wikipedia.org/wiki/Window_function#Nuttall_window,_continuous_first_derivative
+	Nuttall
 )
 
 // Apply func to apply window func Destructively
@@ -44,6 +50,10 @@ func chooseApplyFunc(w window) func([]float64) {
 		return parzen
 	case DeLaValleePoussin:
 		return deLaValleePoussin
+	case Welch:
+		return welch
+	case Sine:
+		return sine
 	case Hanning:
 		return hanning
 	case Hann:
@@ -52,6 +62,8 @@ func chooseApplyFunc(w window) func([]float64) {
 		return hamming
 	case Blackman:
 		return blackman
+	case Nuttall:
+		return nuttall
 	}
 	// return empty if unknown window
 	return func(float64s []float64) {}
@@ -76,6 +88,10 @@ func chooseApplyNewFunc(w window) func([]float64) []float64 {
 		return parzenNew
 	case DeLaValleePoussin:
 		return deLaValleePoussinNew
+	case Welch:
+		return welchNew
+	case Sine:
+		return sineNew
 	case Hanning:
 		return hanningNew
 	case Hann:
@@ -84,6 +100,8 @@ func chooseApplyNewFunc(w window) func([]float64) []float64 {
 		return hammingNew
 	case Blackman:
 		return blackmanNew
+	case Nuttall:
+		return nuttallNew
 	}
 	// return empty if unknown window
 	return func(float64s []float64) []float64 { return []float64{} }
