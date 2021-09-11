@@ -54,19 +54,6 @@ func rifeVincentNew(s []float64, c class, o order, d decibel) []float64 {
 	return sw
 }
 
-func cosineSum(s []float64, v float64) float64 {
-	weight := s[0]
-	for n := range s[1:] {
-		n++
-		w := s[n] * math.Cos(float64(n)*v)
-		if n%2 == 1 {
-			w *= -1
-		}
-		weight += w
-	}
-	return weight
-}
-
 func getCoefficients(c class, o order, d decibel) []float64 {
 	switch c {
 	case class1:
