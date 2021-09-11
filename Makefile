@@ -8,3 +8,8 @@ cov:
 	go test -coverprofile=cover.out
 	go tool cover -func=cover.out > coverage/v$(V)
 	rm cover.out
+
+fmt:
+	gofmt -l -s -w .
+	goimports -w .
+	golangci-lint run ./...
