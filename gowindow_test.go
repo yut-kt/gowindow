@@ -125,6 +125,26 @@ func ExampleApplyNew_deLaValleePoussin() {
 	// 0.009259 0.500000 2.583333 3.444444 1.250000
 }
 
+func ExampleApply_welch() {
+	s := []float64{1, 1, 1, 1, 1}
+	gowindow.Apply(s, gowindow.Welch)
+	for i := range s {
+		fmt.Printf("%f ", s[i])
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.750000 1.000000 0.750000 0.000000
+}
+
+func ExampleApplyNew_welch() {
+	for _, x := range gowindow.ApplyNew([]float64{1, 1, 1, 1, 1}, gowindow.Welch) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.750000 1.000000 0.750000 0.000000
+}
+
 func ExampleApply_hanning() {
 	s := []float64{1, 2, 3, 4}
 	gowindow.Apply(s, gowindow.Hanning)

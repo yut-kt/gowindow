@@ -15,6 +15,8 @@ const (
 	Parzen
 	// DeLaValleePoussin https://en.wikipedia.org/wiki/Window_function#Parzen_window
 	DeLaValleePoussin
+	// Welch https://en.wikipedia.org/wiki/Window_function#Welch_window
+	Welch
 	// Hanning https://en.wikipedia.org/wiki/Window_function#Hann_and_Hamming_windows
 	Hanning
 	// Hann https://en.wikipedia.org/wiki/Window_function#Hann_and_Hamming_windows
@@ -44,6 +46,8 @@ func chooseApplyFunc(w window) func([]float64) {
 		return parzen
 	case DeLaValleePoussin:
 		return deLaValleePoussin
+	case Welch:
+		return welch
 	case Hanning:
 		return hanning
 	case Hann:
@@ -76,6 +80,8 @@ func chooseApplyNewFunc(w window) func([]float64) []float64 {
 		return parzenNew
 	case DeLaValleePoussin:
 		return deLaValleePoussinNew
+	case Welch:
+		return welchNew
 	case Hanning:
 		return hanningNew
 	case Hann:

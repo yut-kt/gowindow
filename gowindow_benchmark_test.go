@@ -38,6 +38,30 @@ func BenchmarkApplyNew_fejer(b *testing.B) {
 	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Fejer)
 }
 
+func BenchmarkApply_parzen(b *testing.B) {
+	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.Parzen)
+}
+
+func BenchmarkApplyNew_parzen(b *testing.B) {
+	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Parzen)
+}
+
+func BenchmarkApply_deLaValleePoussin(b *testing.B) {
+	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.DeLaValleePoussin)
+}
+
+func BenchmarkApplyNew_deLaValleePoussin(b *testing.B) {
+	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.DeLaValleePoussin)
+}
+
+func BenchmarkApply_welch(b *testing.B) {
+	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.Welch)
+}
+
+func BenchmarkApplyNew_welch(b *testing.B) {
+	gowindow.ApplyNew([]float64{1, 2, 3, 4}, gowindow.Welch)
+}
+
 func BenchmarkApply_hanning(b *testing.B) {
 	gowindow.Apply([]float64{1, 2, 3, 4}, gowindow.Hanning)
 }
