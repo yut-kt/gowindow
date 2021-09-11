@@ -307,6 +307,27 @@ func ExampleApplyNew_blackmanHarris() {
 	// 0.000060 0.021736 0.217470 0.695764 1.000000 0.695764 0.217470 0.021736 0.000060
 }
 
+func ExampleApply_flatTop() {
+	s := []float64{1, 1, 1, 1, 1, 1, 1, 1, 1}
+	gowindow.Apply(s, gowindow.FlatTop)
+	for i := range s {
+		fmt.Printf("%f ", s[i])
+	}
+	fmt.Println()
+	// Output:
+	// -0.000421 -0.026872 -0.054737 0.444135 1.000000 0.444135 -0.054737 -0.026872 -0.000421
+}
+
+func ExampleApplyNew_flatTop() {
+	s := []float64{1, 1, 1, 1, 1, 1, 1, 1, 1}
+	for _, x := range gowindow.ApplyNew(s, gowindow.FlatTop) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// -0.000421 -0.026872 -0.054737 0.444135 1.000000 0.444135 -0.054737 -0.026872 -0.000421
+}
+
 func ExampleApply_missedSwitchImplementation() {
 	s := []float64{1, 2, 3, 4}
 	gowindow.Apply(s, gowindow.None)

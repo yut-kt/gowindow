@@ -239,3 +239,35 @@ func BenchmarkApplyNew_blackmanNuttall(b *testing.B) {
 		gowindow.ApplyNew(s, gowindow.BlackmanNuttall)
 	}
 }
+
+func BenchmarkApply_blackmanHarris(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.BlackmanHarris)
+	}
+}
+
+func BenchmarkApplyNew_blackmanHarris(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.BlackmanHarris)
+	}
+}
+
+func BenchmarkApply_flatTop(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.Apply(s, gowindow.FlatTop)
+	}
+}
+
+func BenchmarkApplyNew_flatTop(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.ApplyNew(s, gowindow.FlatTop)
+	}
+}

@@ -33,6 +33,8 @@ const (
 	BlackmanNuttall
 	// BlackmanHarris https://en.wikipedia.org/wiki/Window_function#Blackman%E2%80%93Harris_window
 	BlackmanHarris
+	// FlatTop https://en.wikipedia.org/wiki/Window_function#Flat_top_window
+	FlatTop
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -69,6 +71,8 @@ func (w window) applyWindow(s []float64) {
 		blackmanNuttall(s)
 	case BlackmanHarris:
 		blackmanHarris(s)
+	case FlatTop:
+		flatTop(s)
 	}
 }
 
@@ -104,6 +108,8 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return blackmanNuttallNew(s)
 	case BlackmanHarris:
 		return blackmanHarrisNew(s)
+	case FlatTop:
+		return flatTopNew(s)
 	}
 	// missed in switch implementation
 	return []float64{}

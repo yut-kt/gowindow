@@ -32,9 +32,9 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Hann and Hamming windows
   - Blackman window
   - Nuttall window, continuous first derivative
-  - ~~Blackman–Nuttall window~~
-  - ~~Blackman–Harris window~~
-  - ~~Flat top window~~
+  - Blackman–Nuttall window
+  - Blackman–Harris window
+  - Flat top window
   - ~~Rife–Vincent windows~~
 - Adjustable windows
   - ~~Gaussian window~~
