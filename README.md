@@ -2,7 +2,7 @@
 
 [![v0.1.3](https://img.shields.io/github/v/release/yut-kt/gowindow?logoColor=ff69b4&style=social)]()
 [![Test](https://github.com/yut-kt/gowindow/actions/workflows/default_branch_test.yaml/badge.svg)](https://github.com/yut-kt/gowindow/actions/workflows/default_branch_test.yaml)
-[![coverage](https://img.shields.io/badge/coverage-99.1%%25-green)]()
+[![coverage](https://img.shields.io/badge/coverage-99.1%25-green)]()
 [![Go Report Card](https://goreportcard.com/badge/github.com/yut-kt/gowindow)](https://goreportcard.com/report/github.com/yut-kt/gowindow)  
 [![Go Reference](https://pkg.go.dev/badge/github.com/yut-kt/gowindow.svg)](https://pkg.go.dev/github.com/yut-kt/gowindow)
 [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/yut-kt/gowindow/main/LICENSE)
@@ -37,15 +37,15 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Flat top window
   - Rife–Vincent windows
 - Adjustable windows
-  - ~~Gaussian window~~
-  - ~~Confined Gaussian window~~
-  - ~~Approximate confined Gaussian window~~
-  - ~~Generalized normal window~~
-  - ~~Tukey window~~
-  - ~~Planck-taper window~~
+  - Gaussian window
+  - Confined Gaussian window
+  - Approximate confined Gaussian window
+  - Generalized normal window
+  - Tukey window
+  - Planck-taper window
   - ~~DPSS or Slepian window~~
-  - ~~Kaiser window~~
-  - ~~Dolph–Chebyshev window~~
+  - Kaiser window
+  - Dolph–Chebyshev window
   - ~~Ultraspherical window~~
   - ~~Exponential or Poisson window~~
 - Hybrid windows
