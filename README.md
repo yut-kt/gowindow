@@ -41,7 +41,7 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Confined Gaussian window
   - Approximate confined Gaussian window
   - Generalized normal window
-  - ~~Tukey window~~
+  - Tukey window
   - ~~Planck-taper window~~
   - ~~DPSS or Slepian window~~
   - ~~Kaiser window~~

@@ -585,6 +585,37 @@ func ExampleNew_applyNew_generalizedNormal() {
 	// 0.001930 0.029729 0.209611 0.676634 1.000000 0.676634 0.209611 0.029729 0.001930
 }
 
+func ExampleNew_apply_tukey() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Tukey)
+	err := w.SetOption(&gowindow.Option{Alpha: 0.5})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.500000 1.000000 1.000000 1.000000 1.000000 1.000000 0.500000 0.000000
+}
+
+func ExampleNew_applyNew_tukey() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Tukey)
+	err := w.SetOption(&gowindow.Option{Alpha: 0.5})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.500000 1.000000 1.000000 1.000000 1.000000 1.000000 0.500000 0.000000
+}
+
 func ExampleNew_apply_missedSwitchImplementation() {
 	s := getTestSlice()
 	gowindow.New(gowindow.None).Apply(s)

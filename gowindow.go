@@ -19,6 +19,8 @@ type Option struct {
 	SDt float64
 	// only GeneralizedNormal window
 	P int
+	// only Tukey window
+	Alpha float64
 }
 
 type windows int
@@ -68,6 +70,8 @@ const (
 	ApproximateConfinedGaussian
 	// GeneralizedNormal https://en.wikipedia.org/wiki/Window_function#Generalized_normal_window
 	GeneralizedNormal
+	// Tukey https://en.wikipedia.org/wiki/Window_function#Tukey_window
+	Tukey
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -148,6 +152,8 @@ func (w *window) applyWindow(s []float64) {
 		approximateConfinedGaussian(s, w.o.SDt)
 	case GeneralizedNormal:
 		generalizedNormal(s, w.o.SD, float64(w.o.P))
+	case Tukey:
+		tukey(s, w.o.Alpha)
 	}
 }
 
@@ -197,6 +203,8 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return approximateConfinedGaussianNew(s, w.o.SDt)
 	case GeneralizedNormal:
 		return generalizedNormalNew(s, w.o.SD, float64(w.o.P))
+	case Tukey:
+		return tukeyNew(s, w.o.Alpha)
 	}
 	// missed in switch implementation
 	return []float64{}

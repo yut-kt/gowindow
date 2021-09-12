@@ -586,7 +586,7 @@ func BenchmarkApplyNew_approximateConfinedGaussian(b *testing.B) {
 	}
 }
 
-func BenchmarkApply_generalizedNormalNew(b *testing.B) {
+func BenchmarkApply_generalizedNormal(b *testing.B) {
 	s := makeNSlice()
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
@@ -602,6 +602,26 @@ func BenchmarkApplyNew_generalizedNormal(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.GeneralizedNormal)
 		_ = w.SetOption(&gowindow.Option{SD: 0.4, P: 2})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_tukey(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Tukey)
+		_ = w.SetOption(&gowindow.Option{Alpha: 0.5})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_tukey(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Tukey)
+		_ = w.SetOption(&gowindow.Option{Alpha: 0.5})
 		w.ApplyNew(s)
 	}
 }
