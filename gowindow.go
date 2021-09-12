@@ -19,7 +19,7 @@ type Option struct {
 	SDt float64
 	// only GeneralizedNormal window
 	P int
-	// only Tukey window
+	// only Tukey and Kaiser window
 	Alpha float64 // α
 	// only PlanckTaper window
 	Epsilon float64 // ε
@@ -76,6 +76,8 @@ const (
 	Tukey
 	// PlanckTaper https://en.wikipedia.org/wiki/Window_function#Planck-taper_window
 	PlanckTaper
+	// Kaiser https://en.wikipedia.org/wiki/Window_function#Kaiser_window
+	Kaiser
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -164,6 +166,8 @@ func (w *window) applyWindow(s []float64) {
 		tukey(s, w.o.Alpha)
 	case PlanckTaper:
 		planckTaper(s, w.o.Epsilon)
+	case Kaiser:
+		kaiser(s, w.o.Alpha)
 	}
 }
 
@@ -217,6 +221,8 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return tukeyNew(s, w.o.Alpha)
 	case PlanckTaper:
 		return planckTaperNew(s, w.o.Epsilon)
+	case Kaiser:
+		return kaiserNew(s, w.o.Alpha)
 	}
 	// missed in switch implementation
 	return []float64{}

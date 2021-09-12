@@ -647,6 +647,38 @@ func ExampleNew_applyNew_planckTaper() {
 	// 0.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 0.000000
 }
 
+func ExampleNew_apply_kaiser() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Kaiser)
+	err := w.SetOption(&gowindow.Option{Alpha: 2})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 4.539740 -1.735678 -0.122286 0.785754 1.000000 0.785754 -0.122286 -1.735678 4.539740
+}
+
+func ExampleNew_applyNew_kaiser() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Kaiser)
+	err := w.SetOption(&gowindow.Option{Alpha: 2})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 4.539740 -1.735678 -0.122286 0.785754 1.000000 0.785754 -0.122286 -1.735678 4.539740
+}
+
+
 func ExampleNew_apply_missedSwitchImplementation() {
 	s := getTestSlice()
 	gowindow.New(gowindow.None).Apply(s)

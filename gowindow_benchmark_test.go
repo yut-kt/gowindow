@@ -645,3 +645,23 @@ func BenchmarkApplyNew_planckTaper(b *testing.B) {
 		w.ApplyNew(s)
 	}
 }
+
+func BenchmarkApply_kaiser(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Kaiser)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_kaiser(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Kaiser)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.ApplyNew(s)
+	}
+}
