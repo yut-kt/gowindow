@@ -616,6 +616,37 @@ func ExampleNew_applyNew_tukey() {
 	// 0.000000 0.500000 1.000000 1.000000 1.000000 1.000000 1.000000 0.500000 0.000000
 }
 
+func ExampleNew_apply_planckTaper() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.PlanckTaper)
+	err := w.SetOption(&gowindow.Option{Epsilon: 0.1})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 0.000000
+}
+
+func ExampleNew_applyNew_planckTaper() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.PlanckTaper)
+	err := w.SetOption(&gowindow.Option{Epsilon: 0.1})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 0.000000
+}
+
 func ExampleNew_apply_missedSwitchImplementation() {
 	s := getTestSlice()
 	gowindow.New(gowindow.None).Apply(s)

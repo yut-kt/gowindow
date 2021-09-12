@@ -625,3 +625,23 @@ func BenchmarkApplyNew_tukey(b *testing.B) {
 		w.ApplyNew(s)
 	}
 }
+
+func BenchmarkApply_planckTaper(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PlanckTaper)
+		_ = w.SetOption(&gowindow.Option{Epsilon: 0.1})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_planckTaper(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PlanckTaper)
+		_ = w.SetOption(&gowindow.Option{Epsilon: 0.1})
+		w.ApplyNew(s)
+	}
+}

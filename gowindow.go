@@ -20,7 +20,9 @@ type Option struct {
 	// only GeneralizedNormal window
 	P int
 	// only Tukey window
-	Alpha float64
+	Alpha float64 // α
+	// only PlanckTaper window
+	Epsilon float64 // ε
 }
 
 type windows int
@@ -72,6 +74,8 @@ const (
 	GeneralizedNormal
 	// Tukey https://en.wikipedia.org/wiki/Window_function#Tukey_window
 	Tukey
+	// PlanckTaper https://en.wikipedia.org/wiki/Window_function#Planck-taper_window
+	PlanckTaper
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -101,6 +105,10 @@ func (w *window) validateOption(o *Option) error {
 	case ApproximateConfinedGaussian:
 		if o.SDt >= 0.14 {
 			return errors.New("SDt is illegal value")
+		}
+	case PlanckTaper:
+		if o.Epsilon <= 0 || o.Epsilon > 0.5 {
+			return errors.New("epsilon is illegal value")
 		}
 	}
 	return nil
@@ -154,6 +162,8 @@ func (w *window) applyWindow(s []float64) {
 		generalizedNormal(s, w.o.SD, float64(w.o.P))
 	case Tukey:
 		tukey(s, w.o.Alpha)
+	case PlanckTaper:
+		planckTaper(s, w.o.Epsilon)
 	}
 }
 
@@ -205,6 +215,8 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return generalizedNormalNew(s, w.o.SD, float64(w.o.P))
 	case Tukey:
 		return tukeyNew(s, w.o.Alpha)
+	case PlanckTaper:
+		return planckTaperNew(s, w.o.Epsilon)
 	}
 	// missed in switch implementation
 	return []float64{}
