@@ -1,10 +1,23 @@
 package gowindow
 
-type window int
+type window struct {
+	w windows
+	o *Option
+}
+
+// Option use as an argument to SetOption
+type Option struct {
+	// only Rife-Vincent window
+	Class   class
+	Order   order
+	Decibel decibel
+}
+
+type windows int
 
 const (
 	// Rectangular https://en.wikipedia.org/wiki/Window_function#Rectangular_window
-	Rectangular window = iota
+	Rectangular windows = iota
 	// Triangular https://en.wikipedia.org/wiki/Window_function#Triangular_window
 	Triangular
 	// Bartlett https://en.wikipedia.org/wiki/Window_function#Triangular_window
@@ -29,12 +42,42 @@ const (
 	Blackman
 	// Nuttall https://en.wikipedia.org/wiki/Window_function#Nuttall_window,_continuous_first_derivative
 	Nuttall
+	// BlackmanNuttall https://en.wikipedia.org/wiki/Window_function#Blackman%E2%80%93Nuttall_window
+	BlackmanNuttall
+	// BlackmanHarris https://en.wikipedia.org/wiki/Window_function#Blackman%E2%80%93Harris_window
+	BlackmanHarris
+	// FlatTop https://en.wikipedia.org/wiki/Window_function#Flat_top_window
+	FlatTop
+	// RifeVincent https://en.wikipedia.org/wiki/Window_function#Rife%E2%80%93Vincent_windows
+	RifeVincent
 	// None is test window for when missed in switch implementation
 	None
 )
 
-func (w window) applyWindow(s []float64) {
-	switch w {
+// New is constructor
+func New(w windows) *window {
+	return &window{w: w}
+}
+
+// SetOption is use when external options are needed
+func (w *window) SetOption(o *Option) error {
+	if err := w.validateOption(o); err != nil {
+		return err
+	}
+	w.o = o
+	return nil
+}
+
+func (w *window) validateOption(o *Option) error {
+	switch w.w {
+	case RifeVincent:
+		// TODO: validation
+	}
+	return nil
+}
+
+func (w *window) applyWindow(s []float64) {
+	switch w.w {
 	case Rectangular:
 		rectangular(s)
 	case Triangular:
@@ -61,11 +104,19 @@ func (w window) applyWindow(s []float64) {
 		blackman(s)
 	case Nuttall:
 		nuttall(s)
+	case BlackmanNuttall:
+		blackmanNuttall(s)
+	case BlackmanHarris:
+		blackmanHarris(s)
+	case FlatTop:
+		flatTop(s)
+	case RifeVincent:
+		rifeVincent(s, w.o.Class, w.o.Order, w.o.Decibel)
 	}
 }
 
 func (w window) applyNewWindow(s []float64) []float64 {
-	switch w {
+	switch w.w {
 	case Rectangular:
 		return rectangularNew(s)
 	case Triangular:
@@ -92,17 +143,25 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return blackmanNew(s)
 	case Nuttall:
 		return nuttallNew(s)
+	case BlackmanNuttall:
+		return blackmanNuttallNew(s)
+	case BlackmanHarris:
+		return blackmanHarrisNew(s)
+	case FlatTop:
+		return flatTopNew(s)
+	case RifeVincent:
+		return rifeVincentNew(s, w.o.Class, w.o.Order, w.o.Decibel)
 	}
 	// missed in switch implementation
 	return []float64{}
 }
 
 // Apply func to apply window func Destructively
-func Apply(s []float64, w window) {
+func (w *window) Apply(s []float64) {
 	w.applyWindow(s)
 }
 
 // ApplyNew func to apply window func Non-Destructively
-func ApplyNew(s []float64, w window) []float64 {
+func (w *window) ApplyNew(s []float64) []float64 {
 	return w.applyNewWindow(s)
 }
