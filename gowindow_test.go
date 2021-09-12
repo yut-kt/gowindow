@@ -429,6 +429,68 @@ func ExampleNew_applyNew_rifeVincent() {
 	// [-3.546000e-03 2.294166e-03 2.924730e-01 1.961864e+00 3.490284e+00 1.961864e+00 2.924730e-01 2.294166e-03 -3.546000e-03]
 }
 
+func ExampleNew_apply_gaussian() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Gaussian)
+	err := w.SetOption(&gowindow.Option{SD: 0.4})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.043937 0.172422 0.457833 0.822578 1.000000 0.822578 0.457833 0.172422 0.043937
+}
+
+func ExampleNew_apply_gaussianNew() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Gaussian)
+	err := w.SetOption(&gowindow.Option{SD: 0.4})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.043937 0.172422 0.457833 0.822578 1.000000 0.822578 0.457833 0.172422 0.043937
+}
+
+func ExampleNew_apply_gauss() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Gauss)
+	err := w.SetOption(&gowindow.Option{SD: 0.4})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.043937 0.172422 0.457833 0.822578 1.000000 0.822578 0.457833 0.172422 0.043937
+}
+
+func ExampleNew_apply_gaussNew() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Gauss)
+	err := w.SetOption(&gowindow.Option{SD: 0.4})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.043937 0.172422 0.457833 0.822578 1.000000 0.822578 0.457833 0.172422 0.043937
+}
+
 func ExampleNew_apply_missedSwitchImplementation() {
 	s := getTestSlice()
 	gowindow.New(gowindow.None).Apply(s)

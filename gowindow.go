@@ -1,5 +1,7 @@
 package gowindow
 
+import "errors"
+
 type window struct {
 	w windows
 	o *Option
@@ -11,6 +13,8 @@ type Option struct {
 	Class   class
 	Order   order
 	Decibel decibel
+	// only Gaussian window
+	SD float64 // σ
 }
 
 type windows int
@@ -50,6 +54,10 @@ const (
 	FlatTop
 	// RifeVincent https://en.wikipedia.org/wiki/Window_function#Rife%E2%80%93Vincent_windows
 	RifeVincent
+	// Gaussian https://en.wikipedia.org/wiki/Window_function#Gaussian_window
+	Gaussian
+	// Gauss https://en.wikipedia.org/wiki/Window_function#Gaussian_window
+	Gauss
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -72,6 +80,10 @@ func (w *window) validateOption(o *Option) error {
 	switch w.w {
 	case RifeVincent:
 		// TODO: validation
+	case Gaussian:
+		if o.SD > 0.5 {
+			return errors.New("SD is illegal value")
+		}
 	}
 	return nil
 }
@@ -112,6 +124,10 @@ func (w *window) applyWindow(s []float64) {
 		flatTop(s)
 	case RifeVincent:
 		rifeVincent(s, w.o.Class, w.o.Order, w.o.Decibel)
+	case Gaussian:
+		gaussian(s, w.o.SD)
+	case Gauss:
+		gauss(s, w.o.SD)
 	}
 }
 
@@ -151,6 +167,10 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return flatTopNew(s)
 	case RifeVincent:
 		return rifeVincentNew(s, w.o.Class, w.o.Order, w.o.Decibel)
+	case Gaussian:
+		return gaussianNew(s, w.o.SD)
+	case Gauss:
+		return gaussNew(s, w.o.SD)
 	}
 	// missed in switch implementation
 	return []float64{}

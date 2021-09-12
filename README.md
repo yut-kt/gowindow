@@ -37,7 +37,7 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Flat top window
   - Rife–Vincent windows
 - Adjustable windows
-  - ~~Gaussian window~~
+  - Gaussian window
   - ~~Confined Gaussian window~~
   - ~~Approximate confined Gaussian window~~
   - ~~Generalized normal window~~
