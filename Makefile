@@ -1,10 +1,13 @@
 test:
 	go test -v ./...
 
-benchmark:
-	go test -bench . -benchmem -count 5 -run none > bench/v$(V)
+bench:
+	go test -bench . -benchmem -count 5 -run none
 
 cov:
-	go test -coverprofile=cover.out
-	go tool cover -func=cover.out > coverage/v$(V)
-	rm cover.out
+	go test -cover
+
+fmt:
+	gofmt -l -s -w .
+	goimports -w .
+	golangci-lint run ./...
