@@ -553,6 +553,38 @@ func ExampleNew_applyNew_approximateConfinedGaussian() {
 	// Output:
 	// 0.016812 0.105341 0.367878 0.778801 1.000000 0.778801 0.367878 0.105341 0.016812
 }
+
+func ExampleNew_apply_generalizedNormal() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.GeneralizedNormal)
+	err := w.SetOption(&gowindow.Option{SD: 0.4, P: 2})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.001930 0.029729 0.209611 0.676634 1.000000 0.676634 0.209611 0.029729 0.001930
+}
+
+func ExampleNew_applyNew_generalizedNormal() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.GeneralizedNormal)
+	err := w.SetOption(&gowindow.Option{SD: 0.4, P: 2})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.001930 0.029729 0.209611 0.676634 1.000000 0.676634 0.209611 0.029729 0.001930
+}
+
 func ExampleNew_apply_missedSwitchImplementation() {
 	s := getTestSlice()
 	gowindow.New(gowindow.None).Apply(s)

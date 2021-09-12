@@ -13,10 +13,12 @@ type Option struct {
 	Class   class
 	Order   order
 	Decibel decibel
-	// only Gaussian window
+	// only Gaussian and GeneralizedNormal window
 	SD float64 // σ
 	// only ConfinedGaussian window
 	SDt float64
+	// only GeneralizedNormal window
+	P int
 }
 
 type windows int
@@ -64,6 +66,8 @@ const (
 	ConfinedGaussian
 	// ApproximateConfinedGaussian https://en.wikipedia.org/wiki/Window_function#Approximate_confined_Gaussian_window
 	ApproximateConfinedGaussian
+	// GeneralizedNormal https://en.wikipedia.org/wiki/Window_function#Generalized_normal_window
+	GeneralizedNormal
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -142,6 +146,8 @@ func (w *window) applyWindow(s []float64) {
 		confinedGaussian(s, w.o.SDt)
 	case ApproximateConfinedGaussian:
 		approximateConfinedGaussian(s, w.o.SDt)
+	case GeneralizedNormal:
+		generalizedNormal(s, w.o.SD, float64(w.o.P))
 	}
 }
 
@@ -189,6 +195,8 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return confinedGaussianNew(s, w.o.SDt)
 	case ApproximateConfinedGaussian:
 		return approximateConfinedGaussianNew(s, w.o.SDt)
+	case GeneralizedNormal:
+		return generalizedNormalNew(s, w.o.SD, float64(w.o.P))
 	}
 	// missed in switch implementation
 	return []float64{}

@@ -38,9 +38,9 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Rife–Vincent windows
 - Adjustable windows
   - Gaussian window
-  - ~~Confined Gaussian window~~
-  - ~~Approximate confined Gaussian window~~
-  - ~~Generalized normal window~~
+  - Confined Gaussian window
+  - Approximate confined Gaussian window
+  - Generalized normal window
   - ~~Tukey window~~
   - ~~Planck-taper window~~
   - ~~DPSS or Slepian window~~
