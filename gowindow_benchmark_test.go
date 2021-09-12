@@ -277,7 +277,7 @@ func BenchmarkApply_rifeVincentClass1Order1(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order1})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order1})
 		w.Apply(s)
 	}
 }
@@ -287,7 +287,7 @@ func BenchmarkApplyNew_rifeVincentClass1Order1(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order1})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order1})
 		w.ApplyNew(s)
 	}
 }
@@ -297,7 +297,7 @@ func BenchmarkApply_rifeVincentClass1Order2(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order2})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order2})
 		w.Apply(s)
 	}
 }
@@ -307,7 +307,7 @@ func BenchmarkApplyNew_rifeVincentClass1Order2(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order2})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order2})
 		w.ApplyNew(s)
 	}
 }
@@ -317,7 +317,7 @@ func BenchmarkApply_rifeVincentClass1Order3(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order3})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order3})
 		w.Apply(s)
 	}
 }
@@ -327,7 +327,7 @@ func BenchmarkApplyNew_rifeVincentClass1Order3(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order3})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order3})
 		w.ApplyNew(s)
 	}
 }
@@ -337,7 +337,7 @@ func BenchmarkApply_rifeVincentClass1Order4(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order4})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order4})
 		w.Apply(s)
 	}
 }
@@ -347,7 +347,7 @@ func BenchmarkApplyNew_rifeVincentClass1Order4(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order4})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class1, Order: gowindow.Order4})
 		w.ApplyNew(s)
 	}
 }
@@ -357,7 +357,7 @@ func BenchmarkApply_rifeVincentClass2Decibel36(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel36})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel36})
 		w.Apply(s)
 	}
 }
@@ -366,7 +366,7 @@ func BenchmarkApplyNew_rifeVincentClass2Decibel36(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel36})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel36})
 		w.ApplyNew(s)
 	}
 }
@@ -376,7 +376,7 @@ func BenchmarkApply_rifeVincentClass2Decibel42(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel42})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel42})
 		w.Apply(s)
 	}
 }
@@ -385,7 +385,7 @@ func BenchmarkApplyNew_rifeVincentClass2Decibel42(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel42})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel42})
 		w.ApplyNew(s)
 	}
 }
@@ -395,7 +395,7 @@ func BenchmarkApply_rifeVincentClass2Decibel48(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel48})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel48})
 		w.Apply(s)
 	}
 }
@@ -404,7 +404,7 @@ func BenchmarkApplyNew_rifeVincentClass2Decibel48(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel48})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel48})
 		w.ApplyNew(s)
 	}
 }
@@ -414,7 +414,7 @@ func BenchmarkApply_rifeVincentClass2Decibel54(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel54})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel54})
 		w.Apply(s)
 	}
 }
@@ -423,7 +423,7 @@ func BenchmarkApplyNew_rifeVincentClass2Decibel54(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel54})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel54})
 		w.ApplyNew(s)
 	}
 }
@@ -433,7 +433,7 @@ func BenchmarkApply_rifeVincentClass2Decibel60(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel60})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel60})
 		w.Apply(s)
 	}
 }
@@ -442,7 +442,7 @@ func BenchmarkApplyNew_rifeVincentClass2Decibel60(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel60})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel60})
 		w.ApplyNew(s)
 	}
 }
@@ -452,7 +452,7 @@ func BenchmarkApply_rifeVincentClass2Decibel66(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel66})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel66})
 		w.Apply(s)
 	}
 }
@@ -461,7 +461,7 @@ func BenchmarkApplyNew_rifeVincentClass2Decibel66(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel66})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class2, Decibel: gowindow.Decibel66})
 		w.ApplyNew(s)
 	}
 }
@@ -471,7 +471,7 @@ func BenchmarkApply_rifeVincentClass3Order2(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class3, Order: gowindow.Order2})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class3, Order: gowindow.Order2})
 		w.Apply(s)
 	}
 }
@@ -481,7 +481,7 @@ func BenchmarkApplyNew_rifeVincentClass3Order2(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class3, Order: gowindow.Order2})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class3, Order: gowindow.Order2})
 		w.ApplyNew(s)
 	}
 }
@@ -491,7 +491,7 @@ func BenchmarkApply_rifeVincentClass3Order3(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class3, Order: gowindow.Order3})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class3, Order: gowindow.Order3})
 		w.Apply(s)
 	}
 }
@@ -501,7 +501,7 @@ func BenchmarkApplyNew_rifeVincentClass3Order3(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class3, Order: gowindow.Order3})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class3, Order: gowindow.Order3})
 		w.ApplyNew(s)
 	}
 }
@@ -511,7 +511,7 @@ func BenchmarkApply_rifeVincentClass3Order4(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class3, Order: gowindow.Order4})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class3, Order: gowindow.Order4})
 		w.Apply(s)
 	}
 }
@@ -521,7 +521,7 @@ func BenchmarkApplyNew_rifeVincentClass3Order4(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		w := gowindow.New(gowindow.RifeVincent)
-		w.SetOption(&gowindow.Option{Class: gowindow.Class3, Order: gowindow.Order4})
+		_ = w.SetOption(&gowindow.Option{Class: gowindow.Class3, Order: gowindow.Order4})
 		w.ApplyNew(s)
 	}
 }

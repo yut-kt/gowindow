@@ -2,16 +2,15 @@ package gowindow_test
 
 import (
 	"fmt"
-	"log"
-
 	"github.com/yut-kt/gowindow"
+	"log"
 )
 
 func getTestSlice() []float64 {
 	return []float64{1, 1, 1, 1, 1, 1, 1, 1, 1}
 }
 
-func ExampleApply_rectangular() {
+func ExampleNew_apply_rectangular() {
 	s := getTestSlice()
 	gowindow.New(gowindow.Rectangular).Apply(s)
 	for i := range s {
@@ -22,7 +21,7 @@ func ExampleApply_rectangular() {
 	// 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000
 }
 
-func ExampleApplyNew_rectangular() {
+func ExampleNew_applyNew_rectangular() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.Rectangular).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -32,7 +31,7 @@ func ExampleApplyNew_rectangular() {
 	// 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000
 }
 
-func ExampleApply_triangular() {
+func ExampleNew_apply_triangular() {
 	s := getTestSlice()
 	gowindow.New(gowindow.Triangular).Apply(s)
 	for i := range s {
@@ -42,7 +41,7 @@ func ExampleApply_triangular() {
 	// Output:
 	// 0.000000 0.250000 0.500000 0.750000 1.000000 0.750000 0.500000 0.250000 0.000000
 }
-func ExampleApplyNew_triangular() {
+func ExampleNew_applyNew_triangular() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.Triangular).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -52,7 +51,7 @@ func ExampleApplyNew_triangular() {
 	// 0.000000 0.250000 0.500000 0.750000 1.000000 0.750000 0.500000 0.250000 0.000000
 }
 
-func ExampleApply_bartlett() {
+func ExampleNew_apply_bartlett() {
 	s := getTestSlice()
 	gowindow.New(gowindow.Bartlett).Apply(s)
 	for i := range s {
@@ -63,7 +62,7 @@ func ExampleApply_bartlett() {
 	// 0.000000 0.250000 0.500000 0.750000 1.000000 0.750000 0.500000 0.250000 0.000000
 }
 
-func ExampleApplyNew_bartlett() {
+func ExampleNew_applyNew_bartlett() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.Bartlett).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -73,7 +72,7 @@ func ExampleApplyNew_bartlett() {
 	// 0.000000 0.250000 0.500000 0.750000 1.000000 0.750000 0.500000 0.250000 0.000000
 }
 
-func ExampleApply_fejer() {
+func ExampleNew_apply_fejer() {
 	s := getTestSlice()
 	gowindow.New(gowindow.Fejer).Apply(s)
 	for i := range s {
@@ -84,7 +83,7 @@ func ExampleApply_fejer() {
 	// 0.000000 0.250000 0.500000 0.750000 1.000000 0.750000 0.500000 0.250000 0.000000
 }
 
-func ExampleApplyNew_fejer() {
+func ExampleNew_applyNew_fejer() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.Fejer).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -94,7 +93,7 @@ func ExampleApplyNew_fejer() {
 	// 0.000000 0.250000 0.500000 0.750000 1.000000 0.750000 0.500000 0.250000 0.000000
 }
 
-func ExampleApply_parzen() {
+func ExampleNew_apply_parzen() {
 	s := getTestSlice()
 	gowindow.New(gowindow.Parzen).Apply(s)
 	for i := range s {
@@ -105,7 +104,7 @@ func ExampleApply_parzen() {
 	// 0.002000 0.054000 0.250000 0.622000 0.946000 0.946000 0.622000 0.250000 0.054000
 }
 
-func ExampleApplyNew_parzen() {
+func ExampleNew_applyNew_parzen() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.Parzen).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -115,7 +114,7 @@ func ExampleApplyNew_parzen() {
 	// 0.002000 0.054000 0.250000 0.622000 0.946000 0.946000 0.622000 0.250000 0.054000
 }
 
-func ExampleApply_deLaValleePoussin() {
+func ExampleNew_apply_deLaValleePoussin() {
 	s := getTestSlice()
 	gowindow.New(gowindow.DeLaValleePoussin).Apply(s)
 	for i := range s {
@@ -126,7 +125,7 @@ func ExampleApply_deLaValleePoussin() {
 	// 0.002000 0.054000 0.250000 0.622000 0.946000 0.946000 0.622000 0.250000 0.054000
 }
 
-func ExampleApplyNew_deLaValleePoussin() {
+func ExampleNew_applyNew_deLaValleePoussin() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.DeLaValleePoussin).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -136,7 +135,7 @@ func ExampleApplyNew_deLaValleePoussin() {
 	// 0.002000 0.054000 0.250000 0.622000 0.946000 0.946000 0.622000 0.250000 0.054000
 }
 
-func ExampleApply_welch() {
+func ExampleNew_apply_welch() {
 	s := getTestSlice()
 	gowindow.New(gowindow.Welch).Apply(s)
 	for i := range s {
@@ -147,7 +146,7 @@ func ExampleApply_welch() {
 	// 0.000000 0.437500 0.750000 0.937500 1.000000 0.937500 0.750000 0.437500 0.000000
 }
 
-func ExampleApplyNew_welch() {
+func ExampleNew_applyNew_welch() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.Welch).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -157,7 +156,7 @@ func ExampleApplyNew_welch() {
 	// 0.000000 0.437500 0.750000 0.937500 1.000000 0.937500 0.750000 0.437500 0.000000
 }
 
-func ExampleApply_sine() {
+func ExampleNew_apply_sine() {
 	s := getTestSlice()
 	gowindow.New(gowindow.Sine).Apply(s)
 	for i := range s {
@@ -168,7 +167,7 @@ func ExampleApply_sine() {
 	// 0.000000 0.382683 0.707107 0.923880 1.000000 0.923880 0.707107 0.382683 0.000000
 }
 
-func ExampleApplyNew_sine() {
+func ExampleNew_applyNew_sine() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.Sine).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -178,7 +177,7 @@ func ExampleApplyNew_sine() {
 	// 0.000000 0.382683 0.707107 0.923880 1.000000 0.923880 0.707107 0.382683 0.000000
 }
 
-func ExampleApply_hanning() {
+func ExampleNew_apply_hanning() {
 	s := getTestSlice()
 	gowindow.New(gowindow.Hanning).Apply(s)
 	for i := range s {
@@ -189,7 +188,7 @@ func ExampleApply_hanning() {
 	// 0.000000 0.146447 0.500000 0.853553 1.000000 0.853553 0.500000 0.146447 0.000000
 }
 
-func ExampleApplyNew_hanning() {
+func ExampleNew_applyNew_hanning() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.Hanning).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -199,7 +198,7 @@ func ExampleApplyNew_hanning() {
 	// 0.000000 0.146447 0.500000 0.853553 1.000000 0.853553 0.500000 0.146447 0.000000
 }
 
-func ExampleApply_hann() {
+func ExampleNew_apply_hann() {
 	s := getTestSlice()
 	gowindow.New(gowindow.Hann).Apply(s)
 	for i := range s {
@@ -210,7 +209,7 @@ func ExampleApply_hann() {
 	// 0.000000 0.146447 0.500000 0.853553 1.000000 0.853553 0.500000 0.146447 0.000000
 }
 
-func ExampleApplyNew_hann() {
+func ExampleNew_applyNew_hann() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.Hann).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -220,7 +219,7 @@ func ExampleApplyNew_hann() {
 	// 0.000000 0.146447 0.500000 0.853553 1.000000 0.853553 0.500000 0.146447 0.000000
 }
 
-func ExampleApply_hamming() {
+func ExampleNew_apply_hamming() {
 	s := getTestSlice()
 	gowindow.New(gowindow.Hamming).Apply(s)
 	for i := range s {
@@ -231,7 +230,7 @@ func ExampleApply_hamming() {
 	// 0.080000 0.214731 0.540000 0.865269 1.000000 0.865269 0.540000 0.214731 0.080000
 }
 
-func ExampleApplyNew_hamming() {
+func ExampleNew_applyNew_hamming() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.Hamming).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -241,7 +240,7 @@ func ExampleApplyNew_hamming() {
 	// 0.080000 0.214731 0.540000 0.865269 1.000000 0.865269 0.540000 0.214731 0.080000
 }
 
-func ExampleApply_blackman() {
+func ExampleNew_apply_blackman() {
 	s := getTestSlice()
 	gowindow.New(gowindow.Blackman).Apply(s)
 	for i := range s {
@@ -252,7 +251,7 @@ func ExampleApply_blackman() {
 	// -0.000000 0.066447 0.340000 0.773553 1.000000 0.773553 0.340000 0.066447 -0.000000
 }
 
-func ExampleApplyNew_blackman() {
+func ExampleNew_applyNew_blackman() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.Blackman).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -262,7 +261,7 @@ func ExampleApplyNew_blackman() {
 	// -0.000000 0.066447 0.340000 0.773553 1.000000 0.773553 0.340000 0.066447 -0.000000
 }
 
-func ExampleApply_nuttall() {
+func ExampleNew_apply_nuttall() {
 	s := getTestSlice()
 	gowindow.New(gowindow.Nuttall).Apply(s)
 	for i := range s {
@@ -273,7 +272,7 @@ func ExampleApply_nuttall() {
 	// -0.000000 0.020039 0.211536 0.691497 1.000000 0.691497 0.211536 0.020039 -0.000000
 }
 
-func ExampleApplyNew_nuttall() {
+func ExampleNew_applyNew_nuttall() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.Nuttall).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -283,7 +282,7 @@ func ExampleApplyNew_nuttall() {
 	// -0.000000 0.020039 0.211536 0.691497 1.000000 0.691497 0.211536 0.020039 -0.000000
 }
 
-func ExampleApply_blackmanNuttall() {
+func ExampleNew_apply_blackmanNuttall() {
 	s := getTestSlice()
 	gowindow.New(gowindow.BlackmanNuttall).Apply(s)
 	for i := range s {
@@ -294,7 +293,7 @@ func ExampleApply_blackmanNuttall() {
 	// 0.000363 0.025206 0.226982 0.701958 1.000000 0.701958 0.226982 0.025206 0.000363
 }
 
-func ExampleApplyNew_blackmanNuttall() {
+func ExampleNew_applyNew_blackmanNuttall() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.BlackmanNuttall).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -304,7 +303,7 @@ func ExampleApplyNew_blackmanNuttall() {
 	// 0.000363 0.025206 0.226982 0.701958 1.000000 0.701958 0.226982 0.025206 0.000363
 }
 
-func ExampleApply_blackmanHarris() {
+func ExampleNew_apply_blackmanHarris() {
 	s := getTestSlice()
 	gowindow.New(gowindow.BlackmanHarris).Apply(s)
 	for i := range s {
@@ -315,7 +314,7 @@ func ExampleApply_blackmanHarris() {
 	// 0.000060 0.021736 0.217470 0.695764 1.000000 0.695764 0.217470 0.021736 0.000060
 }
 
-func ExampleApplyNew_blackmanHarris() {
+func ExampleNew_applyNew_blackmanHarris() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.BlackmanHarris).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -325,7 +324,7 @@ func ExampleApplyNew_blackmanHarris() {
 	// 0.000060 0.021736 0.217470 0.695764 1.000000 0.695764 0.217470 0.021736 0.000060
 }
 
-func ExampleApply_flatTop() {
+func ExampleNew_apply_flatTop() {
 	s := getTestSlice()
 	gowindow.New(gowindow.FlatTop).Apply(s)
 	for i := range s {
@@ -336,7 +335,7 @@ func ExampleApply_flatTop() {
 	// -0.000421 -0.026872 -0.054737 0.444135 1.000000 0.444135 -0.054737 -0.026872 -0.000421
 }
 
-func ExampleApplyNew_flatTop() {
+func ExampleNew_applyNew_flatTop() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.FlatTop).ApplyNew(s) {
 		fmt.Printf("%f ", x)
@@ -346,7 +345,7 @@ func ExampleApplyNew_flatTop() {
 	// -0.000421 -0.026872 -0.054737 0.444135 1.000000 0.444135 -0.054737 -0.026872 -0.000421
 }
 
-func ExampleApply_rifeVincent() {
+func ExampleNew_apply_rifeVincent() {
 	options := []gowindow.Option{
 		{Class: gowindow.Class1, Order: gowindow.Order1},
 		{Class: gowindow.Class1, Order: gowindow.Order2},
@@ -388,7 +387,7 @@ func ExampleApply_rifeVincent() {
 	// [-3.546000e-03 2.294166e-03 2.924730e-01 1.961864e+00 3.490284e+00 1.961864e+00 2.924730e-01 2.294166e-03 -3.546000e-03]
 }
 
-func ExampleApplyNew_rifeVincent() {
+func ExampleNew_applyNew_rifeVincent() {
 	options := []gowindow.Option{
 		{Class: gowindow.Class1, Order: gowindow.Order1},
 		{Class: gowindow.Class1, Order: gowindow.Order2},
@@ -430,7 +429,7 @@ func ExampleApplyNew_rifeVincent() {
 	// [-3.546000e-03 2.294166e-03 2.924730e-01 1.961864e+00 3.490284e+00 1.961864e+00 2.924730e-01 2.294166e-03 -3.546000e-03]
 }
 
-func ExampleApply_missedSwitchImplementation() {
+func ExampleNew_apply_missedSwitchImplementation() {
 	s := getTestSlice()
 	gowindow.New(gowindow.None).Apply(s)
 	for i := range s {
@@ -441,7 +440,7 @@ func ExampleApply_missedSwitchImplementation() {
 	// 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000
 }
 
-func ExampleApplyNew_missedSwitchImplementation() {
+func ExampleNew_applyNew_missedSwitchImplementation() {
 	s := getTestSlice()
 	for _, x := range gowindow.New(gowindow.None).ApplyNew(s) {
 		fmt.Printf("%f ", x)
