@@ -2,8 +2,9 @@ package gowindow_test
 
 import (
 	"fmt"
-	"github.com/yut-kt/gowindow"
 	"log"
+
+	"github.com/yut-kt/gowindow"
 )
 
 func getTestSlice() []float64 {
@@ -427,6 +428,285 @@ func ExampleNew_applyNew_rifeVincent() {
 	// [2.775558e-17 1.536992e-01 8.031500e-01 1.846301e+00 2.393700e+00 1.846301e+00 8.031500e-01 1.536992e-01 2.775558e-17]
 	// [1.000000e-06 2.816375e-02 5.024630e-01 1.971836e+00 2.995073e+00 1.971836e+00 5.024630e-01 2.816375e-02 1.000000e-06]
 	// [-3.546000e-03 2.294166e-03 2.924730e-01 1.961864e+00 3.490284e+00 1.961864e+00 2.924730e-01 2.294166e-03 -3.546000e-03]
+}
+
+func ExampleNew_apply_gaussian() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Gaussian)
+	err := w.SetOption(&gowindow.Option{SD: 0.4})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.043937 0.172422 0.457833 0.822578 1.000000 0.822578 0.457833 0.172422 0.043937
+}
+
+func ExampleNew_applyNew_gaussian() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Gaussian)
+	err := w.SetOption(&gowindow.Option{SD: 0.4})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.043937 0.172422 0.457833 0.822578 1.000000 0.822578 0.457833 0.172422 0.043937
+}
+
+func ExampleNew_apply_gauss() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Gauss)
+	err := w.SetOption(&gowindow.Option{SD: 0.4})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.043937 0.172422 0.457833 0.822578 1.000000 0.822578 0.457833 0.172422 0.043937
+}
+
+func ExampleNew_applyNew_gauss() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Gauss)
+	err := w.SetOption(&gowindow.Option{SD: 0.4})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.043937 0.172422 0.457833 0.822578 1.000000 0.822578 0.457833 0.172422 0.043937
+}
+
+func ExampleNew_apply_confinedGaussian() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.ConfinedGaussian)
+	err := w.SetOption(&gowindow.Option{SDt: 0.1})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.016812 0.105341 0.367878 0.778801 1.000000 0.778801 0.367878 0.105341 0.016812
+}
+
+func ExampleNew_applyNew_confinedGaussian() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.ConfinedGaussian)
+	err := w.SetOption(&gowindow.Option{SDt: 0.1})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.016812 0.105341 0.367878 0.778801 1.000000 0.778801 0.367878 0.105341 0.016812
+}
+
+func ExampleNew_apply_approximateConfinedGaussian() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.ApproximateConfinedGaussian)
+	err := w.SetOption(&gowindow.Option{SDt: 0.1})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.016812 0.105341 0.367878 0.778801 1.000000 0.778801 0.367878 0.105341 0.016812
+}
+
+func ExampleNew_applyNew_approximateConfinedGaussian() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.ApproximateConfinedGaussian)
+	err := w.SetOption(&gowindow.Option{SDt: 0.1})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.016812 0.105341 0.367878 0.778801 1.000000 0.778801 0.367878 0.105341 0.016812
+}
+
+func ExampleNew_apply_generalizedNormal() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.GeneralizedNormal)
+	err := w.SetOption(&gowindow.Option{SD: 0.4, P: 2})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.001930 0.029729 0.209611 0.676634 1.000000 0.676634 0.209611 0.029729 0.001930
+}
+
+func ExampleNew_applyNew_generalizedNormal() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.GeneralizedNormal)
+	err := w.SetOption(&gowindow.Option{SD: 0.4, P: 2})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.001930 0.029729 0.209611 0.676634 1.000000 0.676634 0.209611 0.029729 0.001930
+}
+
+func ExampleNew_apply_tukey() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Tukey)
+	err := w.SetOption(&gowindow.Option{Alpha: 0.5})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.500000 1.000000 1.000000 1.000000 1.000000 1.000000 0.500000 0.000000
+}
+
+func ExampleNew_applyNew_tukey() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Tukey)
+	err := w.SetOption(&gowindow.Option{Alpha: 0.5})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.500000 1.000000 1.000000 1.000000 1.000000 1.000000 0.500000 0.000000
+}
+
+func ExampleNew_apply_planckTaper() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.PlanckTaper)
+	err := w.SetOption(&gowindow.Option{Epsilon: 0.1})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 0.000000
+}
+
+func ExampleNew_applyNew_planckTaper() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.PlanckTaper)
+	err := w.SetOption(&gowindow.Option{Epsilon: 0.1})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 0.000000
+}
+
+func ExampleNew_apply_kaiser() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Kaiser)
+	err := w.SetOption(&gowindow.Option{Alpha: 2})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 4.539740 -1.735678 -0.122286 0.785754 1.000000 0.785754 -0.122286 -1.735678 4.539740
+}
+
+func ExampleNew_applyNew_kaiser() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Kaiser)
+	err := w.SetOption(&gowindow.Option{Alpha: 2})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 4.539740 -1.735678 -0.122286 0.785754 1.000000 0.785754 -0.122286 -1.735678 4.539740
+}
+
+func ExampleNew_apply_dolphChebyshev() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.DolphChebyshev)
+	err := w.SetOption(&gowindow.Option{OmegaZero: 0.1})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.197401 0.174267 0.105529 0.033874 0.003743 0.033874 0.105529 0.174267 0.197401
+}
+
+func ExampleNew_applyNew_dolphChebyshev() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.DolphChebyshev)
+	err := w.SetOption(&gowindow.Option{OmegaZero: 0.1})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.197401 0.174267 0.105529 0.033874 0.003743 0.033874 0.105529 0.174267 0.197401
 }
 
 func ExampleNew_apply_missedSwitchImplementation() {

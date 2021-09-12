@@ -525,3 +525,163 @@ func BenchmarkApplyNew_rifeVincentClass3Order4(b *testing.B) {
 		w.ApplyNew(s)
 	}
 }
+
+func BenchmarkApply_gaussian(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Gaussian)
+		_ = w.SetOption(&gowindow.Option{SD: 0.4})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_gaussian(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Gaussian)
+		_ = w.SetOption(&gowindow.Option{SD: 0.4})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_confinedGaussian(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.ConfinedGaussian)
+		_ = w.SetOption(&gowindow.Option{SDt: 0.1})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_confinedGaussian(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.ConfinedGaussian)
+		_ = w.SetOption(&gowindow.Option{SDt: 0.1})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_approximateConfinedGaussian(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.ApproximateConfinedGaussian)
+		_ = w.SetOption(&gowindow.Option{SDt: 0.1})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_approximateConfinedGaussian(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.ApproximateConfinedGaussian)
+		_ = w.SetOption(&gowindow.Option{SDt: 0.1})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_generalizedNormal(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.GeneralizedNormal)
+		_ = w.SetOption(&gowindow.Option{SD: 0.4, P: 2})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_generalizedNormal(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.GeneralizedNormal)
+		_ = w.SetOption(&gowindow.Option{SD: 0.4, P: 2})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_tukey(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Tukey)
+		_ = w.SetOption(&gowindow.Option{Alpha: 0.5})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_tukey(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Tukey)
+		_ = w.SetOption(&gowindow.Option{Alpha: 0.5})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_planckTaper(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PlanckTaper)
+		_ = w.SetOption(&gowindow.Option{Epsilon: 0.1})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_planckTaper(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PlanckTaper)
+		_ = w.SetOption(&gowindow.Option{Epsilon: 0.1})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_kaiser(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Kaiser)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_kaiser(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Kaiser)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_dolphChebyshev(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.DolphChebyshev)
+		_ = w.SetOption(&gowindow.Option{OmegaZero: 0.1})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_dolphChebyshev(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.DolphChebyshev)
+		_ = w.SetOption(&gowindow.Option{OmegaZero: 0.1})
+		w.ApplyNew(s)
+	}
+}

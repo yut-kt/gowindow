@@ -1,5 +1,7 @@
 package gowindow
 
+import "errors"
+
 type window struct {
 	w windows
 	o *Option
@@ -11,6 +13,18 @@ type Option struct {
 	Class   class
 	Order   order
 	Decibel decibel
+	// only Gaussian and GeneralizedNormal window
+	SD float64 // σ
+	// only ConfinedGaussian window
+	SDt float64
+	// only GeneralizedNormal window
+	P int
+	// only Tukey and Kaiser window
+	Alpha float64 // α
+	// only PlanckTaper window
+	Epsilon float64 // ε
+	// only DolphChebyshev window
+	OmegaZero float64
 }
 
 type windows int
@@ -50,6 +64,24 @@ const (
 	FlatTop
 	// RifeVincent https://en.wikipedia.org/wiki/Window_function#Rife%E2%80%93Vincent_windows
 	RifeVincent
+	// Gaussian https://en.wikipedia.org/wiki/Window_function#Gaussian_window
+	Gaussian
+	// Gauss https://en.wikipedia.org/wiki/Window_function#Gaussian_window
+	Gauss
+	// ConfinedGaussian https://en.wikipedia.org/wiki/Window_function#Confined_Gaussian_window
+	ConfinedGaussian
+	// ApproximateConfinedGaussian https://en.wikipedia.org/wiki/Window_function#Approximate_confined_Gaussian_window
+	ApproximateConfinedGaussian
+	// GeneralizedNormal https://en.wikipedia.org/wiki/Window_function#Generalized_normal_window
+	GeneralizedNormal
+	// Tukey https://en.wikipedia.org/wiki/Window_function#Tukey_window
+	Tukey
+	// PlanckTaper https://en.wikipedia.org/wiki/Window_function#Planck-taper_window
+	PlanckTaper
+	// Kaiser https://en.wikipedia.org/wiki/Window_function#Kaiser_window
+	Kaiser
+	// DolphChebyshev https://en.wikipedia.org/wiki/Window_function#Dolph%E2%80%93Chebyshev_window
+	DolphChebyshev
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -72,6 +104,22 @@ func (w *window) validateOption(o *Option) error {
 	switch w.w {
 	case RifeVincent:
 		// TODO: validation
+	case Gaussian:
+		if o.SD > 0.5 {
+			return errors.New("SD is illegal value")
+		}
+	case ApproximateConfinedGaussian:
+		if o.SDt >= 0.14 {
+			return errors.New("SDt is illegal value")
+		}
+	case PlanckTaper:
+		if o.Epsilon <= 0 || o.Epsilon > 0.5 {
+			return errors.New("epsilon is illegal value")
+		}
+	case DolphChebyshev:
+		if o.OmegaZero <= 0 {
+			return errors.New("omegaZero is illegal value")
+		}
 	}
 	return nil
 }
@@ -112,6 +160,24 @@ func (w *window) applyWindow(s []float64) {
 		flatTop(s)
 	case RifeVincent:
 		rifeVincent(s, w.o.Class, w.o.Order, w.o.Decibel)
+	case Gaussian:
+		gaussian(s, w.o.SD)
+	case Gauss:
+		gauss(s, w.o.SD)
+	case ConfinedGaussian:
+		confinedGaussian(s, w.o.SDt)
+	case ApproximateConfinedGaussian:
+		approximateConfinedGaussian(s, w.o.SDt)
+	case GeneralizedNormal:
+		generalizedNormal(s, w.o.SD, float64(w.o.P))
+	case Tukey:
+		tukey(s, w.o.Alpha)
+	case PlanckTaper:
+		planckTaper(s, w.o.Epsilon)
+	case Kaiser:
+		kaiser(s, w.o.Alpha)
+	case DolphChebyshev:
+		dolphChebyshev(s, w.o.OmegaZero)
 	}
 }
 
@@ -151,6 +217,24 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return flatTopNew(s)
 	case RifeVincent:
 		return rifeVincentNew(s, w.o.Class, w.o.Order, w.o.Decibel)
+	case Gaussian:
+		return gaussianNew(s, w.o.SD)
+	case Gauss:
+		return gaussNew(s, w.o.SD)
+	case ConfinedGaussian:
+		return confinedGaussianNew(s, w.o.SDt)
+	case ApproximateConfinedGaussian:
+		return approximateConfinedGaussianNew(s, w.o.SDt)
+	case GeneralizedNormal:
+		return generalizedNormalNew(s, w.o.SD, float64(w.o.P))
+	case Tukey:
+		return tukeyNew(s, w.o.Alpha)
+	case PlanckTaper:
+		return planckTaperNew(s, w.o.Epsilon)
+	case Kaiser:
+		return kaiserNew(s, w.o.Alpha)
+	case DolphChebyshev:
+		return dolphChebyshevNew(s, w.o.OmegaZero)
 	}
 	// missed in switch implementation
 	return []float64{}
