@@ -44,6 +44,7 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Tukey window
   - Planck-taper window
   - ~~DPSS or Slepian window~~
+    - Difficult to implement
   - Kaiser window
   - Dolph–Chebyshev window
   - ~~Ultraspherical window~~
