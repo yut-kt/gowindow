@@ -678,6 +678,36 @@ func ExampleNew_applyNew_kaiser() {
 	// 4.539740 -1.735678 -0.122286 0.785754 1.000000 0.785754 -0.122286 -1.735678 4.539740
 }
 
+func ExampleNew_apply_dolphChebyshev() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.DolphChebyshev)
+	err := w.SetOption(&gowindow.Option{OmegaZero: 0.1})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.197401 0.174267 0.105529 0.033874 0.003743 0.033874 0.105529 0.174267 0.197401
+}
+
+func ExampleNew_applyNew_dolphChebyshev() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.DolphChebyshev)
+	err := w.SetOption(&gowindow.Option{OmegaZero: 0.1})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.197401 0.174267 0.105529 0.033874 0.003743 0.033874 0.105529 0.174267 0.197401
+}
 
 func ExampleNew_apply_missedSwitchImplementation() {
 	s := getTestSlice()

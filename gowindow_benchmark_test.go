@@ -665,3 +665,23 @@ func BenchmarkApplyNew_kaiser(b *testing.B) {
 		w.ApplyNew(s)
 	}
 }
+
+func BenchmarkApply_dolphChebyshev(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.DolphChebyshev)
+		_ = w.SetOption(&gowindow.Option{OmegaZero: 0.1})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_dolphChebyshev(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.DolphChebyshev)
+		_ = w.SetOption(&gowindow.Option{OmegaZero: 0.1})
+		w.ApplyNew(s)
+	}
+}

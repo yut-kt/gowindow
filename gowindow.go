@@ -23,6 +23,8 @@ type Option struct {
 	Alpha float64 // α
 	// only PlanckTaper window
 	Epsilon float64 // ε
+	// only DolphChebyshev window
+	OmegaZero float64
 }
 
 type windows int
@@ -78,6 +80,8 @@ const (
 	PlanckTaper
 	// Kaiser https://en.wikipedia.org/wiki/Window_function#Kaiser_window
 	Kaiser
+	// DolphChebyshev https://en.wikipedia.org/wiki/Window_function#Dolph%E2%80%93Chebyshev_window
+	DolphChebyshev
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -111,6 +115,10 @@ func (w *window) validateOption(o *Option) error {
 	case PlanckTaper:
 		if o.Epsilon <= 0 || o.Epsilon > 0.5 {
 			return errors.New("epsilon is illegal value")
+		}
+	case DolphChebyshev:
+		if o.OmegaZero <= 0 {
+			return errors.New("omegaZero is illegal value")
 		}
 	}
 	return nil
@@ -168,6 +176,8 @@ func (w *window) applyWindow(s []float64) {
 		planckTaper(s, w.o.Epsilon)
 	case Kaiser:
 		kaiser(s, w.o.Alpha)
+	case DolphChebyshev:
+		dolphChebyshev(s, w.o.OmegaZero)
 	}
 }
 
@@ -223,6 +233,8 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return planckTaperNew(s, w.o.Epsilon)
 	case Kaiser:
 		return kaiserNew(s, w.o.Alpha)
+	case DolphChebyshev:
+		return dolphChebyshevNew(s, w.o.OmegaZero)
 	}
 	// missed in switch implementation
 	return []float64{}

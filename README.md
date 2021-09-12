@@ -45,7 +45,7 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Planck-taper window
   - ~~DPSS or Slepian window~~
   - Kaiser window
-  - ~~Dolph–Chebyshev window~~
+  - Dolph–Chebyshev window
   - ~~Ultraspherical window~~
   - ~~Exponential or Poisson window~~
 - Hybrid windows
