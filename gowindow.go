@@ -15,6 +15,8 @@ type Option struct {
 	Decibel decibel
 	// only Gaussian window
 	SD float64 // σ
+	// only ConfinedGaussian window
+	SDt float64
 }
 
 type windows int
@@ -58,6 +60,10 @@ const (
 	Gaussian
 	// Gauss https://en.wikipedia.org/wiki/Window_function#Gaussian_window
 	Gauss
+	// ConfinedGaussian https://en.wikipedia.org/wiki/Window_function#Confined_Gaussian_window
+	ConfinedGaussian
+	// ApproximateConfinedGaussian https://en.wikipedia.org/wiki/Window_function#Approximate_confined_Gaussian_window
+	ApproximateConfinedGaussian
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -83,6 +89,10 @@ func (w *window) validateOption(o *Option) error {
 	case Gaussian:
 		if o.SD > 0.5 {
 			return errors.New("SD is illegal value")
+		}
+	case ApproximateConfinedGaussian:
+		if o.SDt >= 0.14 {
+			return errors.New("SDt is illegal value")
 		}
 	}
 	return nil
@@ -128,6 +138,10 @@ func (w *window) applyWindow(s []float64) {
 		gaussian(s, w.o.SD)
 	case Gauss:
 		gauss(s, w.o.SD)
+	case ConfinedGaussian:
+		confinedGaussian(s, w.o.SDt)
+	case ApproximateConfinedGaussian:
+		approximateConfinedGaussian(s, w.o.SDt)
 	}
 }
 
@@ -171,6 +185,10 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return gaussianNew(s, w.o.SD)
 	case Gauss:
 		return gaussNew(s, w.o.SD)
+	case ConfinedGaussian:
+		return confinedGaussianNew(s, w.o.SDt)
+	case ApproximateConfinedGaussian:
+		return approximateConfinedGaussianNew(s, w.o.SDt)
 	}
 	// missed in switch implementation
 	return []float64{}

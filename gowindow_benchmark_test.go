@@ -525,3 +525,63 @@ func BenchmarkApplyNew_rifeVincentClass3Order4(b *testing.B) {
 		w.ApplyNew(s)
 	}
 }
+
+func BenchmarkApply_gaussian(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Gaussian)
+		_ = w.SetOption(&gowindow.Option{SD: 0.4})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_gaussian(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Gaussian)
+		_ = w.SetOption(&gowindow.Option{SD: 0.4})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_confinedGaussianNew(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.ConfinedGaussian)
+		_ = w.SetOption(&gowindow.Option{SDt: 0.1})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_confinedGaussianNew(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.ConfinedGaussian)
+		_ = w.SetOption(&gowindow.Option{SDt: 0.1})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_approximateConfinedGaussianNew(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.ApproximateConfinedGaussian)
+		_ = w.SetOption(&gowindow.Option{SDt: 0.1})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_approximateConfinedGaussianNew(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.ApproximateConfinedGaussian)
+		_ = w.SetOption(&gowindow.Option{SDt: 0.1})
+		w.ApplyNew(s)
+	}
+}
