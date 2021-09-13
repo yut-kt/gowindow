@@ -2,7 +2,8 @@
 
 **Window Function support for Go language**
 
-<img src="img/gowindow.png" width="3382" alt="gowindow gopher image"/>
+<img src="img/gowindow.png" width="50%" alt="gowindow gopher image"/>
+
 *Gopher image by [Renee French][rf], licensed under [Creative Commons 3.0 Attributions license][cc3-by].*
 
 [![v0.1.5](https://img.shields.io/github/v/release/yut-kt/gowindow?logoColor=ff69b4&style=social)](https://github.com/yut-kt/gowindow/releases)
