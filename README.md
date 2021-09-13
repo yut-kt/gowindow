@@ -2,7 +2,7 @@
 
 **Window Function support for Go language**
 
-<img src="img/gowindow.png" width="50%" alt="gowindow gopher image"/>
+![gowindow gopher image](img/gowindow.png)
 
 *Gopher image by [Renee French][rf], licensed under [Creative Commons 3.0 Attributions license][cc3-by].*
 
