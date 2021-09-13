@@ -19,9 +19,9 @@ type Option struct {
 	SDt float64
 	// only GeneralizedNormal window
 	P int
-	// only Tukey and Kaiser window
+	// only Tukey and Kaiser and PlanckBessel window
 	Alpha float64 // α
-	// only PlanckTaper window
+	// only PlanckTaper and PlanckBessel window
 	Epsilon float64 // ε
 	// only DolphChebyshev window
 	OmegaZero float64
@@ -95,6 +95,8 @@ const (
 	Poisson
 	// BartlettHann https://en.wikipedia.org/wiki/Window_function#Bartlett%E2%80%93Hann_window
 	BartlettHann
+	// PlanckBessel https://en.wikipedia.org/wiki/Window_function#Planck%E2%80%93Bessel_window
+	PlanckBessel
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -199,6 +201,8 @@ func (w *window) applyWindow(s []float64) {
 		poisson(s, w.o.T)
 	case BartlettHann:
 		bartlettHann(s)
+	case PlanckBessel:
+		planckBessel(s, w.o.Epsilon, w.o.Alpha)
 	}
 }
 
@@ -264,6 +268,8 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return poissonNew(s, w.o.T)
 	case BartlettHann:
 		return bartlettHannNew(s)
+	case PlanckBessel:
+		return planckBesselNew(s, w.o.Epsilon, w.o.Alpha)
 	}
 	// missed in switch implementation
 	return []float64{}

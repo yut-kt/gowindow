@@ -761,3 +761,23 @@ func BenchmarkApplyNew_bartlettHann(b *testing.B) {
 		gowindow.New(gowindow.BartlettHann).ApplyNew(s)
 	}
 }
+
+func BenchmarkApply_planckBessel(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PlanckBessel)
+		_ = w.SetOption(&gowindow.Option{Epsilon: 0.1, Alpha: 4.45})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_planckBessel(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PlanckBessel)
+		_ = w.SetOption(&gowindow.Option{Epsilon: 0.1, Alpha: 4.45})
+		w.ApplyNew(s)
+	}
+}

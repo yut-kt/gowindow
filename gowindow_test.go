@@ -802,27 +802,6 @@ func ExampleNew_applyNew_poisson() {
 	// 0.411112 0.513417 0.641180 0.800737 1.000000 0.800737 0.641180 0.513417 0.411112
 }
 
-func ExampleNew_apply_missedSwitchImplementation() {
-	s := getTestSlice()
-	gowindow.New(gowindow.None).Apply(s)
-	for i := range s {
-		fmt.Printf("%f ", s[i])
-	}
-	fmt.Println()
-	// Output:
-	// 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000
-}
-
-func ExampleNew_applyNew_missedSwitchImplementation() {
-	s := getTestSlice()
-	for _, x := range gowindow.New(gowindow.None).ApplyNew(s) {
-		fmt.Printf("%f ", x)
-	}
-	fmt.Println()
-	// Output:
-	//
-}
-
 func ExampleNew_apply_bartlettHann() {
 	s := getTestSlice()
 	gowindow.New(gowindow.BartlettHann).Apply(s)
@@ -842,4 +821,56 @@ func ExampleNew_applyNew_bartlettHann() {
 	fmt.Println()
 	// Output:
 	// 0.000000 0.171299 0.500000 0.828701 1.000000 0.828701 0.500000 0.171299 0.000000
+}
+
+func ExampleNew_apply_planckBessel() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.PlanckBessel)
+	err := w.SetOption(&gowindow.Option{Epsilon: 0.1, Alpha: 4.45})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 2.241608 -0.845019 0.409901 1.229007 1.000000 1.229007 0.409901 -0.845019 3.400478
+}
+
+func ExampleNew_applyNew_planckBessel() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.PlanckBessel)
+	err := w.SetOption(&gowindow.Option{Epsilon: 0.1, Alpha: 4.45})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 2.241608 -0.845019 0.409901 1.229007 1.000000 1.229007 0.409901 -0.845019 3.400478
+}
+
+func ExampleNew_apply_missedSwitchImplementation() {
+	s := getTestSlice()
+	gowindow.New(gowindow.None).Apply(s)
+	for i := range s {
+		fmt.Printf("%f ", s[i])
+	}
+	fmt.Println()
+	// Output:
+	// 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000
+}
+
+func ExampleNew_applyNew_missedSwitchImplementation() {
+	s := getTestSlice()
+	for _, x := range gowindow.New(gowindow.None).ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	//
 }
