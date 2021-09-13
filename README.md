@@ -50,7 +50,7 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Ultraspherical window
   - Exponential or Poisson window
 - Hybrid windows
-  - ~~Bartlett–Hann window~~
+  - Bartlett–Hann window
   - ~~Planck–Bessel window~~
   - ~~Hann–Poisson window~~
 - Other windows

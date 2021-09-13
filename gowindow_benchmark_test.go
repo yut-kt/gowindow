@@ -745,3 +745,19 @@ func BenchmarkApplyNew_poisson(b *testing.B) {
 		w.ApplyNew(s)
 	}
 }
+
+func BenchmarkApply_bartlettHann(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.New(gowindow.BartlettHann).Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_bartlettHann(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.New(gowindow.BartlettHann).ApplyNew(s)
+	}
+}

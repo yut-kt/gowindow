@@ -93,6 +93,8 @@ const (
 	Exponential
 	// Poisson https://en.wikipedia.org/wiki/Window_function#Exponential_or_Poisson_window
 	Poisson
+	// BartlettHann https://en.wikipedia.org/wiki/Window_function#Bartlett%E2%80%93Hann_window
+	BartlettHann
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -195,6 +197,8 @@ func (w *window) applyWindow(s []float64) {
 		exponential(s, w.o.T)
 	case Poisson:
 		poisson(s, w.o.T)
+	case BartlettHann:
+		bartlettHann(s)
 	}
 }
 
@@ -258,6 +262,8 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return exponentialNew(s, w.o.T)
 	case Poisson:
 		return poissonNew(s, w.o.T)
+	case BartlettHann:
+		return bartlettHannNew(s)
 	}
 	// missed in switch implementation
 	return []float64{}

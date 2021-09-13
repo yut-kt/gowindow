@@ -822,3 +822,24 @@ func ExampleNew_applyNew_missedSwitchImplementation() {
 	// Output:
 	//
 }
+
+func ExampleNew_apply_bartlettHann() {
+	s := getTestSlice()
+	gowindow.New(gowindow.BartlettHann).Apply(s)
+	for i := range s {
+		fmt.Printf("%f ", s[i])
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.171299 0.500000 0.828701 1.000000 0.828701 0.500000 0.171299 0.000000
+}
+
+func ExampleNew_applyNew_bartlettHann() {
+	s := getTestSlice()
+	for _, x := range gowindow.New(gowindow.BartlettHann).ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.171299 0.500000 0.828701 1.000000 0.828701 0.500000 0.171299 0.000000
+}
