@@ -947,6 +947,27 @@ func ExampleNew_applyNew_hannPoisson() {
 	// 0.000000 0.032677 0.183940 0.517706 1.000000 0.517706 0.183940 0.032677 0.000000
 }
 
+func ExampleNew_apply_lanczos() {
+	s := getTestSlice()
+	gowindow.New(gowindow.Lanczos).Apply(s)
+	for i := range s {
+		fmt.Printf("%f ", s[i])
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.300105 0.636620 0.900316 1.000000 0.900316 0.636620 0.300105 0.000000
+}
+
+func ExampleNew_applyNew_lanczos() {
+	s := getTestSlice()
+	for _, x := range gowindow.New(gowindow.Lanczos).ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.300105 0.636620 0.900316 1.000000 0.900316 0.636620 0.300105 0.000000
+}
+
 func ExampleNew_apply_missedSwitchImplementation() {
 	s := getTestSlice()
 	gowindow.New(gowindow.None).Apply(s)

@@ -103,6 +103,8 @@ const (
 	PlanckBessel
 	// HannPoisson https://en.wikipedia.org/wiki/Window_function#Hann%E2%80%93Poisson_window
 	HannPoisson
+	// Lanczos https://en.wikipedia.org/wiki/Window_function#Lanczos_window
+	Lanczos
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -215,6 +217,8 @@ func (w *window) applyWindow(s []float64) {
 		planckBessel(s, w.o.Epsilon, w.o.Alpha)
 	case HannPoisson:
 		hannPoisson(s, w.o.Alpha)
+	case Lanczos:
+		lanczos(s)
 	}
 }
 
@@ -288,6 +292,8 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return planckBesselNew(s, w.o.Epsilon, w.o.Alpha)
 	case HannPoisson:
 		return hannPoissonNew(s, w.o.Alpha)
+	case Lanczos:
+		return lanczosNew(s)
 	}
 	// missed in switch implementation
 	return []float64{}

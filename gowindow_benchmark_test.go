@@ -841,3 +841,19 @@ func BenchmarkApplyNew_hannPoisson(b *testing.B) {
 		w.ApplyNew(s)
 	}
 }
+
+func BenchmarkApply_lanczos(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.New(gowindow.Lanczos).Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_lanczos(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.New(gowindow.Lanczos).ApplyNew(s)
+	}
+}

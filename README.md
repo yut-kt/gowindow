@@ -55,7 +55,8 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Hann–Poisson window
 - Other windows
   - ~~Generalized adaptive polynomial (GAP) window~~
-  - ~~Lanczos window~~
+    - Difficult to implement
+  - Lanczos window
 
 ## Benchmark
 https://github.com/yut-kt/gowindow/wiki/Benchmark
