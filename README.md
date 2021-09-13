@@ -48,7 +48,7 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Kaiser window
   - Dolph–Chebyshev window
   - Ultraspherical window
-  - ~~Exponential or Poisson window~~
+  - Exponential or Poisson window
 - Hybrid windows
   - ~~Bartlett–Hann window~~
   - ~~Planck–Bessel window~~

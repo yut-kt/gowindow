@@ -722,7 +722,7 @@ func ExampleNew_apply_ultraspherical() {
 	}
 	fmt.Println()
 	// Output:
-	// 0.197401 0.174267 0.105529 0.033874 0.003743 0.033874 0.105529 0.174267 0.197401
+	// 0.000118 0.001023 0.000114 0.002987 -0.000173 -0.008020 -0.000173 0.002987 0.000114
 }
 
 func ExampleNew_applyNew_ultraspherical() {
@@ -737,7 +737,69 @@ func ExampleNew_applyNew_ultraspherical() {
 	}
 	fmt.Println()
 	// Output:
-	// 0.197401 0.174267 0.105529 0.033874 0.003743 0.033874 0.105529 0.174267 0.197401
+	// 0.000118 0.001023 0.000114 0.002987 -0.000173 -0.008020 -0.000173 0.002987 0.000114
+}
+
+func ExampleNew_apply_exponential() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Exponential)
+	err := w.SetOption(&gowindow.Option{T: float64(len(s)) / 2})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.411112 0.513417 0.641180 0.800737 1.000000 0.800737 0.641180 0.513417 0.411112
+}
+
+func ExampleNew_applyNew_exponential() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Exponential)
+	err := w.SetOption(&gowindow.Option{T: float64(len(s)) / 2})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.411112 0.513417 0.641180 0.800737 1.000000 0.800737 0.641180 0.513417 0.411112
+}
+
+func ExampleNew_apply_poisson() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Poisson)
+	err := w.SetOption(&gowindow.Option{T: float64(len(s)) / 2})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.411112 0.513417 0.641180 0.800737 1.000000 0.800737 0.641180 0.513417 0.411112
+}
+
+func ExampleNew_applyNew_poisson() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Poisson)
+	err := w.SetOption(&gowindow.Option{T: float64(len(s)) / 2})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.411112 0.513417 0.641180 0.800737 1.000000 0.800737 0.641180 0.513417 0.411112
 }
 
 func ExampleNew_apply_missedSwitchImplementation() {

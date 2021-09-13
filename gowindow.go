@@ -28,6 +28,8 @@ type Option struct {
 	// only Ultraspherical window
 	Mu    float64 // μ
 	XZero float64
+	// only Exponential and Poisson window
+	T float64
 }
 
 type windows int
@@ -87,6 +89,10 @@ const (
 	DolphChebyshev
 	// Ultraspherical https://en.wikipedia.org/wiki/Window_function#Ultraspherical_window
 	Ultraspherical
+	// Exponential https://en.wikipedia.org/wiki/Window_function#Exponential_or_Poisson_window
+	Exponential
+	// Poisson https://en.wikipedia.org/wiki/Window_function#Exponential_or_Poisson_window
+	Poisson
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -185,6 +191,10 @@ func (w *window) applyWindow(s []float64) {
 		dolphChebyshev(s, w.o.OmegaZero)
 	case Ultraspherical:
 		ultraspherical(s, w.o.Mu, w.o.XZero)
+	case Exponential:
+		exponential(s, w.o.T)
+	case Poisson:
+		poisson(s, w.o.T)
 	}
 }
 
@@ -244,6 +254,10 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return dolphChebyshevNew(s, w.o.OmegaZero)
 	case Ultraspherical:
 		return ultrasphericalNew(s, w.o.Mu, w.o.XZero)
+	case Exponential:
+		return exponentialNew(s, w.o.T)
+	case Poisson:
+		return poissonNew(s, w.o.T)
 	}
 	// missed in switch implementation
 	return []float64{}

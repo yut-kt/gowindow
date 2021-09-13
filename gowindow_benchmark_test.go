@@ -705,3 +705,43 @@ func BenchmarkApplyNew_ultraspherical(b *testing.B) {
 		w.ApplyNew(s)
 	}
 }
+
+func BenchmarkApply_exponential(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Exponential)
+		_ = w.SetOption(&gowindow.Option{T: 512})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_exponential(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Exponential)
+		_ = w.SetOption(&gowindow.Option{T: 512})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_poisson(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Poisson)
+		_ = w.SetOption(&gowindow.Option{T: 512})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_poisson(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Poisson)
+		_ = w.SetOption(&gowindow.Option{T: 512})
+		w.ApplyNew(s)
+	}
+}
