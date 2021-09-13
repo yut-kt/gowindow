@@ -781,3 +781,23 @@ func BenchmarkApplyNew_planckBessel(b *testing.B) {
 		w.ApplyNew(s)
 	}
 }
+
+func BenchmarkApply_hannPoisson(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.HannPoisson)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_hannPoisson(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.HannPoisson)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.ApplyNew(s)
+	}
+}

@@ -854,6 +854,37 @@ func ExampleNew_applyNew_planckBessel() {
 	// 2.241608 -0.845019 0.409901 1.229007 1.000000 1.229007 0.409901 -0.845019 3.400478
 }
 
+func ExampleNew_apply_hannPoisson() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.HannPoisson)
+	err := w.SetOption(&gowindow.Option{Alpha: 2})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.032677 0.183940 0.517706 1.000000 0.517706 0.183940 0.032677 0.000000
+}
+
+func ExampleNew_applyNew_hannPoisson() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.HannPoisson)
+	err := w.SetOption(&gowindow.Option{Alpha: 2})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.032677 0.183940 0.517706 1.000000 0.517706 0.183940 0.032677 0.000000
+}
+
 func ExampleNew_apply_missedSwitchImplementation() {
 	s := getTestSlice()
 	gowindow.New(gowindow.None).Apply(s)

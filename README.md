@@ -52,7 +52,7 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
 - Hybrid windows
   - Bartlett–Hann window
   - Planck–Bessel window
-  - ~~Hann–Poisson window~~
+  - Hann–Poisson window
 - Other windows
   - ~~Generalized adaptive polynomial (GAP) window~~
   - ~~Lanczos window~~
