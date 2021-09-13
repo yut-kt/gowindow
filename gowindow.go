@@ -19,12 +19,17 @@ type Option struct {
 	SDt float64
 	// only GeneralizedNormal window
 	P int
-	// only Tukey and Kaiser window
+	// only PowerOfSine and PowerOfCosine Tukey and Kaiser and PlanckBessel and HannPoisson window
 	Alpha float64 // α
-	// only PlanckTaper window
+	// only PlanckTaper and PlanckBessel window
 	Epsilon float64 // ε
 	// only DolphChebyshev window
 	OmegaZero float64
+	// only Ultraspherical window
+	Mu    float64 // μ
+	XZero float64
+	// only Exponential and Poisson window
+	T float64
 }
 
 type windows int
@@ -46,6 +51,10 @@ const (
 	Welch
 	// Sine https://en.wikipedia.org/wiki/Window_function#Sine_window
 	Sine
+	// PowerOfSine https://en.wikipedia.org/wiki/Window_function#Power-of-sine/cosine_windows
+	PowerOfSine
+	// PowerOfCosine https://en.wikipedia.org/wiki/Window_function#Power-of-sine/cosine_windows
+	PowerOfCosine
 	// Hanning https://en.wikipedia.org/wiki/Window_function#Hann_and_Hamming_windows
 	Hanning
 	// Hann https://en.wikipedia.org/wiki/Window_function#Hann_and_Hamming_windows
@@ -82,6 +91,20 @@ const (
 	Kaiser
 	// DolphChebyshev https://en.wikipedia.org/wiki/Window_function#Dolph%E2%80%93Chebyshev_window
 	DolphChebyshev
+	// Ultraspherical https://en.wikipedia.org/wiki/Window_function#Ultraspherical_window
+	Ultraspherical
+	// Exponential https://en.wikipedia.org/wiki/Window_function#Exponential_or_Poisson_window
+	Exponential
+	// Poisson https://en.wikipedia.org/wiki/Window_function#Exponential_or_Poisson_window
+	Poisson
+	// BartlettHann https://en.wikipedia.org/wiki/Window_function#Bartlett%E2%80%93Hann_window
+	BartlettHann
+	// PlanckBessel https://en.wikipedia.org/wiki/Window_function#Planck%E2%80%93Bessel_window
+	PlanckBessel
+	// HannPoisson https://en.wikipedia.org/wiki/Window_function#Hann%E2%80%93Poisson_window
+	HannPoisson
+	// Lanczos https://en.wikipedia.org/wiki/Window_function#Lanczos_window
+	Lanczos
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -142,6 +165,10 @@ func (w *window) applyWindow(s []float64) {
 		welch(s)
 	case Sine:
 		sine(s)
+	case PowerOfSine:
+		powerOfSine(s, w.o.Alpha)
+	case PowerOfCosine:
+		powerOfCosine(s, w.o.Alpha)
 	case Hanning:
 		hanning(s)
 	case Hann:
@@ -178,6 +205,20 @@ func (w *window) applyWindow(s []float64) {
 		kaiser(s, w.o.Alpha)
 	case DolphChebyshev:
 		dolphChebyshev(s, w.o.OmegaZero)
+	case Ultraspherical:
+		ultraspherical(s, w.o.Mu, w.o.XZero)
+	case Exponential:
+		exponential(s, w.o.T)
+	case Poisson:
+		poisson(s, w.o.T)
+	case BartlettHann:
+		bartlettHann(s)
+	case PlanckBessel:
+		planckBessel(s, w.o.Epsilon, w.o.Alpha)
+	case HannPoisson:
+		hannPoisson(s, w.o.Alpha)
+	case Lanczos:
+		lanczos(s)
 	}
 }
 
@@ -199,6 +240,10 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return welchNew(s)
 	case Sine:
 		return sineNew(s)
+	case PowerOfSine:
+		return powerOfSineNew(s, w.o.Alpha)
+	case PowerOfCosine:
+		return powerOfCosineNew(s, w.o.Alpha)
 	case Hanning:
 		return hanningNew(s)
 	case Hann:
@@ -235,6 +280,20 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return kaiserNew(s, w.o.Alpha)
 	case DolphChebyshev:
 		return dolphChebyshevNew(s, w.o.OmegaZero)
+	case Ultraspherical:
+		return ultrasphericalNew(s, w.o.Mu, w.o.XZero)
+	case Exponential:
+		return exponentialNew(s, w.o.T)
+	case Poisson:
+		return poissonNew(s, w.o.T)
+	case BartlettHann:
+		return bartlettHannNew(s)
+	case PlanckBessel:
+		return planckBesselNew(s, w.o.Epsilon, w.o.Alpha)
+	case HannPoisson:
+		return hannPoissonNew(s, w.o.Alpha)
+	case Lanczos:
+		return lanczosNew(s)
 	}
 	// missed in switch implementation
 	return []float64{}
