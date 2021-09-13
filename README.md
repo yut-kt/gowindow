@@ -1,14 +1,18 @@
 # gowindow
 
-[![v0.1.3](https://img.shields.io/github/v/release/yut-kt/gowindow?logoColor=ff69b4&style=social)]()
+**Window Function support for Go language**
+
+![gowindow gopher image](img/gowindow.png)
+
+*Gopher image by [Renee French][rf], licensed under [Creative Commons 3.0 Attributions license][cc3-by].*
+
+[![v0.1.5](https://img.shields.io/github/v/release/yut-kt/gowindow?logoColor=ff69b4&style=social)](https://github.com/yut-kt/gowindow/releases)
 [![Test](https://github.com/yut-kt/gowindow/actions/workflows/default_branch_test.yaml/badge.svg)](https://github.com/yut-kt/gowindow/actions/workflows/default_branch_test.yaml)
-[![coverage](https://img.shields.io/badge/coverage-96.4%25-green)]()
+[![coverage](https://img.shields.io/badge/coverage-97.0%25-green)]()
 [![Go Report Card](https://goreportcard.com/badge/github.com/yut-kt/gowindow)](https://goreportcard.com/report/github.com/yut-kt/gowindow)  
 [![Go Reference](https://pkg.go.dev/badge/github.com/yut-kt/gowindow.svg)](https://pkg.go.dev/github.com/yut-kt/gowindow)
 [![license](http://img.shields.io/badge/license-MIT-red.svg?style=flat)](https://raw.githubusercontent.com/yut-kt/gowindow/main/LICENSE)
 
-
-**Window Function support for Go language**
 
 ## Install
 ```bash
@@ -63,3 +67,6 @@ https://github.com/yut-kt/gowindow/wiki/Benchmark
 
 ## License
 gowindow is released under the [MIT License](https://raw.githubusercontent.com/yut-kt/gowindow/main/LICENSE).
+
+[rf]: https://reneefrench.blogspot.com/
+[cc3-by]: https://creativecommons.org/licenses/by/3.0/
