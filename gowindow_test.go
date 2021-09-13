@@ -709,6 +709,37 @@ func ExampleNew_applyNew_dolphChebyshev() {
 	// 0.197401 0.174267 0.105529 0.033874 0.003743 0.033874 0.105529 0.174267 0.197401
 }
 
+func ExampleNew_apply_ultraspherical() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Ultraspherical)
+	err := w.SetOption(&gowindow.Option{Mu: -0.5, XZero: 1})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.197401 0.174267 0.105529 0.033874 0.003743 0.033874 0.105529 0.174267 0.197401
+}
+
+func ExampleNew_applyNew_ultraspherical() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.Ultraspherical)
+	err := w.SetOption(&gowindow.Option{Mu: -0.5, XZero: 1})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.197401 0.174267 0.105529 0.033874 0.003743 0.033874 0.105529 0.174267 0.197401
+}
+
 func ExampleNew_apply_missedSwitchImplementation() {
 	s := getTestSlice()
 	gowindow.New(gowindow.None).Apply(s)

@@ -685,3 +685,23 @@ func BenchmarkApplyNew_dolphChebyshev(b *testing.B) {
 		w.ApplyNew(s)
 	}
 }
+
+func BenchmarkApply_ultraspherical(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Ultraspherical)
+		_ = w.SetOption(&gowindow.Option{Mu: -0.5, XZero: 1})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_ultraspherical(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Ultraspherical)
+		_ = w.SetOption(&gowindow.Option{Mu: -0.5, XZero: 1})
+		w.ApplyNew(s)
+	}
+}

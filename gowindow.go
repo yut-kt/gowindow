@@ -25,6 +25,9 @@ type Option struct {
 	Epsilon float64 // ε
 	// only DolphChebyshev window
 	OmegaZero float64
+	// only Ultraspherical window
+	Mu    float64 // μ
+	XZero float64
 }
 
 type windows int
@@ -82,6 +85,8 @@ const (
 	Kaiser
 	// DolphChebyshev https://en.wikipedia.org/wiki/Window_function#Dolph%E2%80%93Chebyshev_window
 	DolphChebyshev
+	// Ultraspherical https://en.wikipedia.org/wiki/Window_function#Ultraspherical_window
+	Ultraspherical
 	// None is test window for when missed in switch implementation
 	None
 )
@@ -178,6 +183,8 @@ func (w *window) applyWindow(s []float64) {
 		kaiser(s, w.o.Alpha)
 	case DolphChebyshev:
 		dolphChebyshev(s, w.o.OmegaZero)
+	case Ultraspherical:
+		ultraspherical(s, w.o.Mu, w.o.XZero)
 	}
 }
 
@@ -235,6 +242,8 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return kaiserNew(s, w.o.Alpha)
 	case DolphChebyshev:
 		return dolphChebyshevNew(s, w.o.OmegaZero)
+	case Ultraspherical:
+		return ultrasphericalNew(s, w.o.Mu, w.o.XZero)
 	}
 	// missed in switch implementation
 	return []float64{}
