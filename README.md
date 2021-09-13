@@ -47,15 +47,16 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
     - Difficult to implement
   - Kaiser window
   - Dolph–Chebyshev window
-  - ~~Ultraspherical window~~
-  - ~~Exponential or Poisson window~~
+  - Ultraspherical window
+  - Exponential or Poisson window
 - Hybrid windows
-  - ~~Bartlett–Hann window~~
-  - ~~Planck–Bessel window~~
-  - ~~Hann–Poisson window~~
+  - Bartlett–Hann window
+  - Planck–Bessel window
+  - Hann–Poisson window
 - Other windows
   - ~~Generalized adaptive polynomial (GAP) window~~
-  - ~~Lanczos window~~
+    - Difficult to implement
+  - Lanczos window
 
 ## Benchmark
 https://github.com/yut-kt/gowindow/wiki/Benchmark

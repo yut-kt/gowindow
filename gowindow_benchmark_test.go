@@ -144,6 +144,46 @@ func BenchmarkApplyNew_sine(b *testing.B) {
 	}
 }
 
+func BenchmarkApply_powerOfSine(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PowerOfSine)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_powerOfSine(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PowerOfSine)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_powerOfCosine(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PowerOfCosine)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_powerOfCosine(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PowerOfCosine)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.ApplyNew(s)
+	}
+}
+
 func BenchmarkApply_hanning(b *testing.B) {
 	s := makeNSlice()
 	b.ResetTimer()
@@ -683,5 +723,137 @@ func BenchmarkApplyNew_dolphChebyshev(b *testing.B) {
 		w := gowindow.New(gowindow.DolphChebyshev)
 		_ = w.SetOption(&gowindow.Option{OmegaZero: 0.1})
 		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_ultraspherical(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Ultraspherical)
+		_ = w.SetOption(&gowindow.Option{Mu: -0.5, XZero: 1})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_ultraspherical(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Ultraspherical)
+		_ = w.SetOption(&gowindow.Option{Mu: -0.5, XZero: 1})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_exponential(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Exponential)
+		_ = w.SetOption(&gowindow.Option{T: 512})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_exponential(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Exponential)
+		_ = w.SetOption(&gowindow.Option{T: 512})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_poisson(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Poisson)
+		_ = w.SetOption(&gowindow.Option{T: 512})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_poisson(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.Poisson)
+		_ = w.SetOption(&gowindow.Option{T: 512})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_bartlettHann(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.New(gowindow.BartlettHann).Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_bartlettHann(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.New(gowindow.BartlettHann).ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_planckBessel(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PlanckBessel)
+		_ = w.SetOption(&gowindow.Option{Epsilon: 0.1, Alpha: 4.45})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_planckBessel(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PlanckBessel)
+		_ = w.SetOption(&gowindow.Option{Epsilon: 0.1, Alpha: 4.45})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_hannPoisson(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.HannPoisson)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_hannPoisson(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.HannPoisson)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_lanczos(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.New(gowindow.Lanczos).Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_lanczos(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		gowindow.New(gowindow.Lanczos).ApplyNew(s)
 	}
 }
