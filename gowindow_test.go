@@ -178,6 +178,68 @@ func ExampleNew_applyNew_sine() {
 	// 0.000000 0.382683 0.707107 0.923880 1.000000 0.923880 0.707107 0.382683 0.000000
 }
 
+func ExampleNew_apply_powerOfSine() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.PowerOfSine)
+	err := w.SetOption(&gowindow.Option{Alpha: 2})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.146447 0.500000 0.853553 1.000000 0.853553 0.500000 0.146447 0.000000
+}
+
+func ExampleNew_applyNew_powerOfSine() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.PowerOfSine)
+	err := w.SetOption(&gowindow.Option{Alpha: 2})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.146447 0.500000 0.853553 1.000000 0.853553 0.500000 0.146447 0.000000
+}
+
+func ExampleNew_apply_powerOfCosine() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.PowerOfCosine)
+	err := w.SetOption(&gowindow.Option{Alpha: 2})
+	w.Apply(s)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for n := range s {
+		fmt.Printf("%f ", s[n])
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.146447 0.500000 0.853553 1.000000 0.853553 0.500000 0.146447 0.000000
+}
+
+func ExampleNew_applyNew_powerOfCosine() {
+	s := getTestSlice()
+	w := gowindow.New(gowindow.PowerOfCosine)
+	err := w.SetOption(&gowindow.Option{Alpha: 2})
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, x := range w.ApplyNew(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.146447 0.500000 0.853553 1.000000 0.853553 0.500000 0.146447 0.000000
+}
+
 func ExampleNew_apply_hanning() {
 	s := getTestSlice()
 	gowindow.New(gowindow.Hanning).Apply(s)

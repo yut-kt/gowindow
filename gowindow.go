@@ -19,7 +19,7 @@ type Option struct {
 	SDt float64
 	// only GeneralizedNormal window
 	P int
-	// only Tukey and Kaiser and PlanckBessel and HannPoisson window
+	// only PowerOfSine and PowerOfCosine Tukey and Kaiser and PlanckBessel and HannPoisson window
 	Alpha float64 // α
 	// only PlanckTaper and PlanckBessel window
 	Epsilon float64 // ε
@@ -51,6 +51,10 @@ const (
 	Welch
 	// Sine https://en.wikipedia.org/wiki/Window_function#Sine_window
 	Sine
+	// PowerOfSine https://en.wikipedia.org/wiki/Window_function#Power-of-sine/cosine_windows
+	PowerOfSine
+	// PowerOfCosine https://en.wikipedia.org/wiki/Window_function#Power-of-sine/cosine_windows
+	PowerOfCosine
 	// Hanning https://en.wikipedia.org/wiki/Window_function#Hann_and_Hamming_windows
 	Hanning
 	// Hann https://en.wikipedia.org/wiki/Window_function#Hann_and_Hamming_windows
@@ -159,6 +163,10 @@ func (w *window) applyWindow(s []float64) {
 		welch(s)
 	case Sine:
 		sine(s)
+	case PowerOfSine:
+		powerOfSine(s, w.o.Alpha)
+	case PowerOfCosine:
+		powerOfCosine(s, w.o.Alpha)
 	case Hanning:
 		hanning(s)
 	case Hann:
@@ -228,6 +236,10 @@ func (w window) applyNewWindow(s []float64) []float64 {
 		return welchNew(s)
 	case Sine:
 		return sineNew(s)
+	case PowerOfSine:
+		return powerOfSineNew(s, w.o.Alpha)
+	case PowerOfCosine:
+		return powerOfCosineNew(s, w.o.Alpha)
 	case Hanning:
 		return hanningNew(s)
 	case Hann:

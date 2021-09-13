@@ -144,6 +144,46 @@ func BenchmarkApplyNew_sine(b *testing.B) {
 	}
 }
 
+func BenchmarkApply_powerOfSine(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PowerOfSine)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_powerOfSine(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PowerOfSine)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.ApplyNew(s)
+	}
+}
+
+func BenchmarkApply_powerOfCosine(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PowerOfCosine)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.Apply(s)
+	}
+}
+
+func BenchmarkApplyNew_powerOfCosine(b *testing.B) {
+	s := makeNSlice()
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		w := gowindow.New(gowindow.PowerOfCosine)
+		_ = w.SetOption(&gowindow.Option{Alpha: 2})
+		w.ApplyNew(s)
+	}
+}
+
 func BenchmarkApply_hanning(b *testing.B) {
 	s := makeNSlice()
 	b.ResetTimer()
