@@ -2,8 +2,9 @@ package gowindow_test
 
 import (
 	"fmt"
-	"github.com/yut-kt/gowindow"
 	"log"
+
+	"github.com/yut-kt/gowindow"
 )
 
 func getTestSlice() []float64 {

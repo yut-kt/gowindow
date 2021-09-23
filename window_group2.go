@@ -61,4 +61,3 @@ func Parzen(s []float64) []float64 {
 func DeLaValleePoussin(s []float64) []float64 {
 	return Parzen(s)
 }
-

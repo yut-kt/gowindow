@@ -1,9 +1,10 @@
 package gowindow_test
 
 import (
-	"github.com/yut-kt/gowindow"
 	"math/rand"
 	"testing"
+
+	"github.com/yut-kt/gowindow"
 )
 
 func makeBenchSlice() []float64 {
