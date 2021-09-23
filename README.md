@@ -48,14 +48,13 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Tukey window
   - Planck-taper window
   - ~~DPSS or Slepian window~~
-    - Difficult to implement
   - Kaiser window
-  - Dolph–Chebyshev window
-  - Ultraspherical window
+  - ~~Dolph–Chebyshev window~~
+  - ~~Ultraspherical window~~
   - Exponential or Poisson window
 - Hybrid windows
   - Bartlett–Hann window
-  - Planck–Bessel window
+  - ~~Planck–Bessel window~~
   - Hann–Poisson window
 - Other windows
   - ~~Generalized adaptive polynomial (GAP) window~~
