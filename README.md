@@ -6,7 +6,7 @@
 
 *Gopher image by [Renee French][rf], licensed under [Creative Commons 3.0 Attributions license][cc3-by].*
 
-[![v0.1.5](https://img.shields.io/github/v/release/yut-kt/gowindow?logoColor=ff69b4&style=social)](https://github.com/yut-kt/gowindow/releases)
+[![v0.1.6](https://img.shields.io/github/v/release/yut-kt/gowindow?logoColor=ff69b4&style=social)](https://github.com/yut-kt/gowindow/releases)
 [![Test](https://github.com/yut-kt/gowindow/actions/workflows/default_branch_test.yaml/badge.svg)](https://github.com/yut-kt/gowindow/actions/workflows/default_branch_test.yaml)
 [![coverage](https://img.shields.io/badge/coverage-96.1%25-green)]()
 [![Go Report Card](https://goreportcard.com/badge/github.com/yut-kt/gowindow)](https://goreportcard.com/report/github.com/yut-kt/gowindow)  
