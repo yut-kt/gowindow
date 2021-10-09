@@ -69,6 +69,9 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
 ## Benchmark
 https://github.com/yut-kt/gowindow/wiki/Benchmark
 
+## Contribution
+[CONTRIBUTING.md](docs/CONTRIBUTING.md)
+
 ## License
 gowindow is released under the [MIT License](https://raw.githubusercontent.com/yut-kt/gowindow/main/LICENSE).
 
