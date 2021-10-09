@@ -1,20 +1,20 @@
 package gowindow
 
-func sumSlice(s []float64) float64 {
-	var sum float64
-	for i := range s {
-		sum += s[i]
-	}
-	return sum
-}
+//func sumSlice(s []float64) float64 {
+//	var sum float64
+//	for i := range s {
+//		sum += s[i]
+//	}
+//	return sum
+//}
 
-func makeFloatSlice(size int, initV float64) []float64 {
-	s := make([]float64, size)
-	for i := range s {
-		s[i] = initV
-	}
-	return s
-}
+//func makeFloatSlice(size int, initV float64) []float64 {
+//	s := make([]float64, size)
+//	for i := range s {
+//		s[i] = initV
+//	}
+//	return s
+//}
 
 // KaiserBesselDerived is failure work
 // implementation is incorrect because the window value is incorrect
