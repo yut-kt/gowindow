@@ -6,7 +6,7 @@
 
 *Gopher image by [Renee French][rf], licensed under [Creative Commons 3.0 Attributions license][cc3-by].*
 
-[![v0.1.6](https://img.shields.io/github/v/release/yut-kt/gowindow?logoColor=ff69b4&style=social)](https://github.com/yut-kt/gowindow/releases)
+[![v0.1.7](https://img.shields.io/github/v/release/yut-kt/gowindow?logoColor=ff69b4&style=social)](https://github.com/yut-kt/gowindow/releases)
 [![Test](https://github.com/yut-kt/gowindow/actions/workflows/default_branch_test.yaml/badge.svg)](https://github.com/yut-kt/gowindow/actions/workflows/default_branch_test.yaml)
 [![coverage](https://img.shields.io/badge/coverage-96.1%25-green)]()
 [![Go Report Card](https://goreportcard.com/badge/github.com/yut-kt/gowindow)](https://goreportcard.com/report/github.com/yut-kt/gowindow)  
@@ -32,6 +32,7 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Welch window
 - Sine window
   - Power-of-sine/cosine windows
+  - Vorbis window
 - Cosine-sum windows
   - Hann and Hamming windows
   - Blackman window
@@ -40,6 +41,7 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - Blackman–Harris window
   - Flat top window
   - Rife–Vincent windows
+  - Akaike window
 - Adjustable windows
   - Gaussian window
   - Confined Gaussian window
@@ -60,6 +62,9 @@ See [gowindow_test.go](https://github.com/yut-kt/gowindow/blob/main/gowindow_tes
   - ~~Generalized adaptive polynomial (GAP) window~~
     - Difficult to implement
   - Lanczos window
+
+- ~~windows other than the above list~~
+  - ~~Kaiser Bessel derived window~~
 
 ## Benchmark
 https://github.com/yut-kt/gowindow/wiki/Benchmark
