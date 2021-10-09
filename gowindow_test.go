@@ -148,6 +148,16 @@ func ExampleCosine() {
 	// 0.000000 0.382683 0.707107 0.923880 1.000000 0.923880 0.707107 0.382683 0.000000
 }
 
+func ExampleVorbis() {
+	s := getTestSlice()
+	for _, x := range gowindow.Vorbis(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.000000 0.228014 0.707107 0.973658 1.000000 0.973658 0.707107 0.228014 0.000000
+}
+
 func ExampleHann() {
 	s := getTestSlice()
 	for _, x := range gowindow.Hann(s) {
@@ -238,7 +248,7 @@ func ExampleBlackmanHarris() {
 	// 0.000060 0.021736 0.217470 0.695764 1.000000 0.695764 0.217470 0.021736 0.000060
 }
 
-func ExampleNew_applyNew_flatTop() {
+func ExampleFlatTop() {
 	s := getTestSlice()
 	for _, x := range gowindow.FlatTop(s) {
 		fmt.Printf("%f ", x)
@@ -300,9 +310,33 @@ func ExampleRifeVincentClass3() {
 	// [-3.546000e-03 2.294166e-03 2.924730e-01 1.961864e+00 3.490284e+00 1.961864e+00 2.924730e-01 2.294166e-03 -3.546000e-03]
 }
 
+func ExampleAkaike() {
+	s := getTestSlice()
+	for _, x := range gowindow.Akaike(s) {
+		fmt.Printf("%f ", x)
+	}
+	fmt.Println()
+	// Output:
+	// 0.250000 0.271447 0.500000 0.978553 1.250000 0.978553 0.500000 0.271447 0.250000
+}
+
 func ExampleGaussian() {
 	s := getTestSlice()
 	gaussian, err := gowindow.Gaussian(s, 0.4)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for i := range gaussian {
+		fmt.Printf("%f ", gaussian[i])
+	}
+	fmt.Println()
+	// Output:
+	// 0.043937 0.172422 0.457833 0.822578 1.000000 0.822578 0.457833 0.172422 0.043937
+}
+
+func ExampleGauss() {
+	s := getTestSlice()
+	gaussian, err := gowindow.Gauss(s, 0.4)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -250,3 +250,17 @@ func RifeVincentClass3(s []float64, order int) ([]float64, error) {
 	}
 	return sw, nil
 }
+
+// Akaike window made by akaike
+// https://ja.wikipedia.org/wiki/%E8%B5%A4%E6%B1%A0%E5%BC%98%E6%AC%A1
+func Akaike(s []float64) []float64 {
+	sw := append([]float64{}, s...)
+
+	a := []float64{0.625, 0.5, 0.125}
+
+	v := 2 * math.Pi / float64(len(s)-1)
+	for n := range s {
+		sw[n] *= cosineSum(a, float64(n)*v)
+	}
+	return sw
+}
