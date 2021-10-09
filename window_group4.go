@@ -43,3 +43,16 @@ func Sine(s []float64) []float64 {
 func Cosine(s []float64) []float64 {
 	return PowerOfCosine(s, 1)
 }
+
+// Vorbis window used [Vorbis](https://xiph.org/vorbis/doc/Vorbis_I_spec.html)
+// https://en.wikipedia.org/wiki/Vorbis
+func Vorbis(s []float64) []float64 {
+	sw := append([]float64{}, s...)
+
+	halfPi := math.Pi / 2
+	v := math.Pi / float64(len(s)-1)
+	for n := range s {
+		sw[n] *= math.Sin(halfPi*math.Pow(math.Sin(float64(n)*v), 2))
+	}
+	return sw
+}
